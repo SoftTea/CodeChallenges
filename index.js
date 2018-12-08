@@ -182,8 +182,8 @@
 // //             if (testVar === str1) {
 // //                 return false
 // //             }
-          
-        
+
+
 // //    }
 // //    return true
 //   if scrabl
@@ -209,7 +209,7 @@
 //     console.log(x[0], 'x')
 //     switch(x[0]) {
 //        case 'plus': 
-     
+
 //        return 0 + x[1]
 
 //        case 'minus': 
@@ -240,7 +240,7 @@
 //         case 'dividedBy': 
 //         return Math.floor(1 / x[1])
 //      }
-   
+
 // }
 // function two(x) {
 //     if (x === undefined) {
@@ -249,7 +249,7 @@
 //     switch(x[0]) {
 //         case 'plus': 
 //         return 2 + x[1];
-        
+
 //         case 'minus': 
 //         return 2 - x[1];
 
@@ -267,7 +267,7 @@
 //     switch(x[0]) {
 //         case 'plus': 
 //         return 3 + x[1];
-        
+
 //         case 'minus': 
 //         return 3 - x[1];
 
@@ -285,7 +285,7 @@
 //     switch(x[0]) {
 //         case 'plus': 
 //         return 4 + x[1];
-        
+
 //         case 'minus': 
 //         return 4 - x[1];
 
@@ -303,7 +303,7 @@
 //     switch(x[0]) {
 //         case 'plus': 
 //         return 5 + x[1];
-        
+
 //         case 'minus': 
 //         return 5 - x[1];
 
@@ -321,7 +321,7 @@
 // switch(x[0]) {
 //     case 'plus': 
 //     return 6 + x[1];
-    
+
 //     case 'minus': 
 //     return 6 - x[1];
 
@@ -338,7 +338,7 @@
 // switch(x[0]) {
 //     case 'plus': 
 //     return 7 + x[1];
-    
+
 //     case 'minus': 
 //     return 7 - x[1];
 
@@ -355,7 +355,7 @@
 //     switch(x[0]) {
 //         case 'plus': 
 //         return 8 + x[1];
-        
+
 //         case 'minus': 
 //         return 8 - x[1];
 
@@ -373,7 +373,7 @@
 //     switch(x[0]) {
 //         case 'plus': 
 //         return 9 + x[1];
-        
+
 //         case 'minus': 
 //         return 9 - x[1];
 
@@ -425,7 +425,7 @@
 //         leadingZeros--
 //     }
 //    console.log(leadingZeros);
-   
+
 //     for (let i = 0 ; i< numbersArray.length; i++) {
 //         if (numbersArray[i] === '0') {
 
@@ -485,9 +485,9 @@
 // function parseMolecule(formula) {
 //     console.log(formula, 'formula')
 //       var group, tokens, tokenExp = /([{(\[]|[})\]]|[A-Z][a-z]?)(\d*)/g, stack = [[]];
-     
+
 //       while (tokens = tokenExp.exec(formula)) {
-    
+
 //       console.log(tokens, 'tokens')
 //         tokens[2] = tokens[2] || 1;
 //         if (/^[A-Z]/.test(tokens[1])) {
@@ -511,3 +511,123 @@
 //         return count;
 //       }, {});
 //     }
+
+
+// function curry(fn) {
+//     // Let the currying begin!
+
+//     return (...xs) => {
+        
+//         if (xs.legnth === 0) {
+//             throw Error('EMPTY INVOCATION')
+//         }
+
+//         if (xs.length >= fn.length) {
+//             return fn(...xs)
+//         }
+
+//         return curry(fn.bind(null, ...xs))
+
+//     }
+
+
+//     // function nest (N,args) {
+//     //     return (...xs) => {
+//     //         // console.log(x)
+//     //         if (xs.length === 0) {
+//     //             throw Error ('EMPTY INVOCATION')
+//     //         }
+
+
+//     //         // console.log(args)
+//     // //         if (N - xs.length <= 0) {
+//     // //             return fn(...args, ...xs);
+//     // //         }
+//     // //         return nest(N-xs.length, [...args, ...xs ]);
+//     // //     }
+//     // // }
+
+//     // // return nest (fn.length , [])
+// }
+
+
+// const add = curry((x,y,z) => {
+//     let sum = 0;
+//     // console.log(args.length, 'arguments len')
+//     // for (let i = 0; i < arguments[0].length; i++) {
+//     //     sum += args[i]
+//     //  }
+//      return x + y + z
+// })
+
+// console.log(add(10,2)(2) )
+
+// function add(n){
+//     var fn = function(x) {
+//       return add(n + x);
+//     };
+    
+//     fn.valueOf = function() {
+//       return n;
+//     };
+    
+//     return fn;
+//   }
+
+//   console.log( add(2) ) 
+
+// Maximum subarray sum 
+
+// function maxSequence(array) {
+//   let largest = 0
+//   let currV = 0
+ 
+//   for (let i = 0; i <array.length ; i++) {
+    
+//     currV = 0
+  
+//       for(let j = i; j < array.length ; j++) {
+//        currV += array[j]
+//        if (currV > largest) {
+//          largest = currV;
+//        }
+//        console.log('i:', i , 'j:', j)
+//       }
+   
+//   }
+  
+//   return largest
+// }
+
+// console.log(maxSequence([-2, 1, -3, 4, -1, 2, 1, -5]) )
+
+
+function myFirstInterpreter(code) {
+  // Implement your interpreter here
+  let codeSplit = code.split('')
+  let currASCII = 0
+  let asciiArray = []
+
+  for(let i =0; i < codeSplit.length; i++) {
+    
+    if (codeSplit[i] === '+') {
+      currASCII++
+      if (currASCII === 256) {
+        currASCII = 0
+      }
+    }  else if (codeSplit[i] === '.') {
+      asciiArray.push(currASCII)
+    }
+  }
+
+  for (let i = 0; i <asciiArray.length ; i++) {
+    asciiArray[i] = String.fromCharCode (asciiArray[i])
+  }
+
+  return asciiArray.join('')
+}
+
+
+let x = myFirstInterpreter('+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++.+.+.+.+.+.+.+.+.+.+.+.+.+.+.+.+.+.+.+.+.+.+.+.+.+.');
+
+console.log(x)
