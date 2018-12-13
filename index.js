@@ -602,32 +602,48 @@
 // console.log(maxSequence([-2, 1, -3, 4, -1, 2, 1, -5]) )
 
 
-function myFirstInterpreter(code) {
-  // Implement your interpreter here
-  let codeSplit = code.split('')
-  let currASCII = 0
-  let asciiArray = []
+// function myFirstInterpreter(code) {
+//   // Implement your interpreter here
+//   let codeSplit = code.split('')
+//   let currASCII = 0
+//   let asciiArray = []
 
-  for(let i =0; i < codeSplit.length; i++) {
+//   for(let i =0; i < codeSplit.length; i++) {
     
-    if (codeSplit[i] === '+') {
-      currASCII++
-      if (currASCII === 256) {
-        currASCII = 0
-      }
-    }  else if (codeSplit[i] === '.') {
-      asciiArray.push(currASCII)
-    }
-  }
+//     if (codeSplit[i] === '+') {
+//       currASCII++
+//       if (currASCII === 256) {
+//         currASCII = 0
+//       }
+//     }  else if (codeSplit[i] === '.') {
+//       asciiArray.push(currASCII)
+//     }
+//   }
 
-  for (let i = 0; i <asciiArray.length ; i++) {
-    asciiArray[i] = String.fromCharCode (asciiArray[i])
-  }
+//   for (let i = 0; i <asciiArray.length ; i++) {
+//     asciiArray[i] = String.fromCharCode (asciiArray[i])
+//   }
 
-  return asciiArray.join('')
+//   return asciiArray.join('')
+// }
+
+
+// let x = myFirstInterpreter('+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++.+.+.+.+.+.+.+.+.+.+.+.+.+.+.+.+.+.+.+.+.+.+.+.+.+.');
+
+// console.log(x)
+
+//Number of trailing zeros of N!
+
+function zeros (n) {
+  
+let k = Math.floor((Math.log(n)/Math.log(5)))
+let trailingZeros = 0;
+for ( let i = 1; i<= k ; i++) {
+  trailingZeros += Math.floor( n/5**i)
+}
+return trailingZeros
 }
 
 
-let x = myFirstInterpreter('+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++.+.+.+.+.+.+.+.+.+.+.+.+.+.+.+.+.+.+.+.+.+.+.+.+.+.');
 
-console.log(x)
+console.log(zeros(777))
