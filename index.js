@@ -634,16 +634,27 @@
 
 //Number of trailing zeros of N!
 
-function zeros (n) {
+// function zeros (n) {
   
-let k = Math.floor((Math.log(n)/Math.log(5)))
-let trailingZeros = 0;
-for ( let i = 1; i<= k ; i++) {
-  trailingZeros += Math.floor( n/5**i)
+// let k = Math.floor((Math.log(n)/Math.log(5)))
+// let trailingZeros = 0;
+// for ( let i = 1; i<= k ; i++) {
+//   trailingZeros += Math.floor( n/5**i)
+// }
+// return trailingZeros
+// }
+
+
+
+// console.log(zeros(777))
+
+// Extract the domain name from a URL
+
+function domainName(url){
+  //your code here
+  const regex = /(http:\/\/)?(https:\/\/)?(www.)?/g
+  const regex2 = /\..*/g
+  return url.replace( regex, '').replace(regex2, '')
 }
-return trailingZeros
-}
 
-
-
-console.log(zeros(777))
+console.log(domainName("https://youtube.com"))
