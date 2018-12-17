@@ -650,11 +650,47 @@
 
 // Extract the domain name from a URL
 
-function domainName(url){
-  //your code here
-  const regex = /(http:\/\/)?(https:\/\/)?(www.)?/g
-  const regex2 = /\..*/g
-  return url.replace( regex, '').replace(regex2, '')
+// function domainName(url){
+//   //your code here
+//   const regex = /(http:\/\/)?(https:\/\/)?(www.)?/g
+//   const regex2 = /\..*/g
+//   return url.replace( regex, '').replace(regex2, '')
+// }
+
+// console.log(domainName("https://youtube.com"))
+
+// Human readable time from only seconds 
+
+function humanReadable (seconds) {
+  let hours = Math.floor(seconds / 3600)
+
+  let hoursRemainder = seconds % 3600
+  let minutes = Math.floor(hoursRemainder / 60);
+  
+  let minutesRemainder = hoursRemainder % 60;
+
+  if (hours < 10) {
+    hours = '0'+hours.toString()
+  }
+
+  if (minutes < 10) {
+    minutes = '0'+minutes.toString()
+  }
+
+  if (minutesRemainder < 10) {
+    minutesRemainder = '0'+minutesRemainder.toString()
+  }
+
+  return `${hours}:${minutes}:${minutesRemainder}`
+
 }
 
-console.log(domainName("https://youtube.com"))
+console.log (120822 % 60 )
+
+// Other's solution
+// function humanReadable(seconds) {
+//   var pad = function(x) { return (x < 10) ? "0"+x : x; }
+//   return pad(parseInt(seconds / (60*60))) + ":" +
+//          pad(parseInt(seconds / 60 % 60)) + ":" +
+//          pad(seconds % 60)
+// }
