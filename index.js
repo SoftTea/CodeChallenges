@@ -517,7 +517,7 @@
 //     // Let the currying begin!
 
 //     return (...xs) => {
-        
+
 //         if (xs.legnth === 0) {
 //             throw Error('EMPTY INVOCATION')
 //         }
@@ -566,11 +566,11 @@
 //     var fn = function(x) {
 //       return add(n + x);
 //     };
-    
+
 //     fn.valueOf = function() {
 //       return n;
 //     };
-    
+
 //     return fn;
 //   }
 
@@ -581,11 +581,11 @@
 // function maxSequence(array) {
 //   let largest = 0
 //   let currV = 0
- 
+
 //   for (let i = 0; i <array.length ; i++) {
-    
+
 //     currV = 0
-  
+
 //       for(let j = i; j < array.length ; j++) {
 //        currV += array[j]
 //        if (currV > largest) {
@@ -593,9 +593,9 @@
 //        }
 //        console.log('i:', i , 'j:', j)
 //       }
-   
+
 //   }
-  
+
 //   return largest
 // }
 
@@ -609,7 +609,7 @@
 //   let asciiArray = []
 
 //   for(let i =0; i < codeSplit.length; i++) {
-    
+
 //     if (codeSplit[i] === '+') {
 //       currASCII++
 //       if (currASCII === 256) {
@@ -635,7 +635,7 @@
 //Number of trailing zeros of N!
 
 // function zeros (n) {
-  
+
 // let k = Math.floor((Math.log(n)/Math.log(5)))
 // let trailingZeros = 0;
 // for ( let i = 1; i<= k ; i++) {
@@ -661,31 +661,31 @@
 
 // Human readable time from only seconds 
 
-function humanReadable (seconds) {
-  let hours = Math.floor(seconds / 3600)
+// function humanReadable (seconds) {
+//   let hours = Math.floor(seconds / 3600)
 
-  let hoursRemainder = seconds % 3600
-  let minutes = Math.floor(hoursRemainder / 60);
-  
-  let minutesRemainder = hoursRemainder % 60;
+//   let hoursRemainder = seconds % 3600
+//   let minutes = Math.floor(hoursRemainder / 60);
 
-  if (hours < 10) {
-    hours = '0'+hours.toString()
-  }
+//   let minutesRemainder = hoursRemainder % 60;
 
-  if (minutes < 10) {
-    minutes = '0'+minutes.toString()
-  }
+//   if (hours < 10) {
+//     hours = '0'+hours.toString()
+//   }
 
-  if (minutesRemainder < 10) {
-    minutesRemainder = '0'+minutesRemainder.toString()
-  }
+//   if (minutes < 10) {
+//     minutes = '0'+minutes.toString()
+//   }
 
-  return `${hours}:${minutes}:${minutesRemainder}`
+//   if (minutesRemainder < 10) {
+//     minutesRemainder = '0'+minutesRemainder.toString()
+//   }
 
-}
+//   return `${hours}:${minutes}:${minutesRemainder}`
 
-console.log (120822 % 60 )
+// }
+
+// console.log (120822 % 60 )
 
 // Other's solution
 // function humanReadable(seconds) {
@@ -694,3 +694,50 @@ console.log (120822 % 60 )
 //          pad(parseInt(seconds / 60 % 60)) + ":" +
 //          pad(seconds % 60)
 // }
+
+
+function rot13(message) {
+  //your code here
+  let decoded = '';
+
+  for (let i = 0; i < message.length; i++) {
+    let charCode = message.charCodeAt(i)
+
+    if (charCode >= 65 && charCode <= 90) {
+      charCode += 13
+      if (charCode > 90) {
+        charCode = (charCode % 91) + 65
+      }
+
+      decoded += String.fromCharCode(charCode)
+    } else if (charCode >= 97 && charCode <= 122) {
+      charCode += 13
+      if (charCode > 122) {
+        charCode = (charCode % 123) + 97
+      }
+
+      decoded += String.fromCharCode(charCode)
+    } else {
+      decoded += String.fromCharCode(charCode)
+    }
+  }
+
+  return decoded;
+}
+
+
+
+console.log(rot13('ng4pk'))
+
+/// Other's fancy solutions //
+
+function rot13(message) {
+  var a = "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ"
+  var b = "nopqrstuvwxyzabcdefghijklmNOPQRSTUVWXYZABCDEFGHIJKLM"
+  return message.replace(/[a-z]/gi, c => b[a.indexOf(c)])
+}
+
+const cl = str => 
+          str.replace(/[a-z]/gi, 
+          letter => 
+              String.fromCharCode(letter.charCodeAt(0) + (letter.toLowerCase() <= 'm' ? 13: -13)));
