@@ -696,48 +696,70 @@
 // }
 
 
-function rot13(message) {
-  //your code here
-  let decoded = '';
+// function rot13(message) {
+//   //your code here
+//   let decoded = '';
 
-  for (let i = 0; i < message.length; i++) {
-    let charCode = message.charCodeAt(i)
+//   for (let i = 0; i < message.length; i++) {
+//     let charCode = message.charCodeAt(i)
 
-    if (charCode >= 65 && charCode <= 90) {
-      charCode += 13
-      if (charCode > 90) {
-        charCode = (charCode % 91) + 65
-      }
+//     if (charCode >= 65 && charCode <= 90) {
+//       charCode += 13
+//       if (charCode > 90) {
+//         charCode = (charCode % 91) + 65
+//       }
 
-      decoded += String.fromCharCode(charCode)
-    } else if (charCode >= 97 && charCode <= 122) {
-      charCode += 13
-      if (charCode > 122) {
-        charCode = (charCode % 123) + 97
-      }
+//       decoded += String.fromCharCode(charCode)
+//     } else if (charCode >= 97 && charCode <= 122) {
+//       charCode += 13
+//       if (charCode > 122) {
+//         charCode = (charCode % 123) + 97
+//       }
 
-      decoded += String.fromCharCode(charCode)
-    } else {
-      decoded += String.fromCharCode(charCode)
-    }
-  }
+//       decoded += String.fromCharCode(charCode)
+//     } else {
+//       decoded += String.fromCharCode(charCode)
+//     }
+//   }
 
-  return decoded;
+//   return decoded;
+// }
+
+
+
+// console.log(rot13('ng4pk'))
+
+// /// Other's fancy solutions //
+
+// function rot13(message) {
+//   var a = "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ"
+//   var b = "nopqrstuvwxyzabcdefghijklmNOPQRSTUVWXYZABCDEFGHIJKLM"
+//   return message.replace(/[a-z]/gi, c => b[a.indexOf(c)])
+// }
+
+// const cl = str => 
+//           str.replace(/[a-z]/gi, 
+//           letter => 
+//               String.fromCharCode(letter.charCodeAt(0) + (letter.toLowerCase() <= 'm' ? 13: -13)));
+
+
+function pigIt(str) {
+  const reg = /\b/g
+
+  return str.split(reg).map((item) =>  item[0].search(/[a-z]/gi) < 0 ? item : item.slice(1) + item[0] + 'ay').join('')
 }
 
 
+console.log (pigIt('Hello world !') );
 
-console.log(rot13('ng4pk'))
+// How other smarter people did it
 
-/// Other's fancy solutions //
+// function pigIt(str){
+//   return str.replace(/(\w)(\w*)(\s|$)/g, "\$2\$1ay\$3")
+// }
 
-function rot13(message) {
-  var a = "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ"
-  var b = "nopqrstuvwxyzabcdefghijklmNOPQRSTUVWXYZABCDEFGHIJKLM"
-  return message.replace(/[a-z]/gi, c => b[a.indexOf(c)])
-}
-
-const cl = str => 
-          str.replace(/[a-z]/gi, 
-          letter => 
-              String.fromCharCode(letter.charCodeAt(0) + (letter.toLowerCase() <= 'm' ? 13: -13)));
+// function pigIt(str) {
+//   return str.replace(/\w+/g, (w) => {
+//     return w.slice(1) + w[0] + 'ay';
+//   });
+// }
