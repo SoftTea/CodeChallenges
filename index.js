@@ -743,23 +743,39 @@
 //               String.fromCharCode(letter.charCodeAt(0) + (letter.toLowerCase() <= 'm' ? 13: -13)));
 
 
-function pigIt(str) {
-  const reg = /\b/g
+// function pigIt(str) {
+//   const reg = /\b/g
 
-  return str.split(reg).map((item) =>  item[0].search(/[a-z]/gi) < 0 ? item : item.slice(1) + item[0] + 'ay').join('')
-}
+//   return str.split(reg).map((item) =>  item[0].search(/[a-z]/gi) < 0 ? item : item.slice(1) + item[0] + 'ay').join('')
+// }
+
+// console.log (pigIt('Hello another world') );
 
 
-console.log (pigIt('Hello world !') );
 
 // How other smarter people did it
 
 // function pigIt(str){
-//   return str.replace(/(\w)(\w*)(\s|$)/g, "\$2\$1ay\$3")
+//   return str.replace(/(\w)(\w*)(\s|$)/g, "$2$1ay$3")
 // }
+
 
 // function pigIt(str) {
 //   return str.replace(/\w+/g, (w) => {
 //     return w.slice(1) + w[0] + 'ay';
 //   });
 // }
+
+// 4 By 4 Skyscrapers
+
+function solvePuzzle (clues) {
+    // Start your coding here...
+    
+}
+
+solvePuzzel ( [
+  2, 2, 1, 3,
+  2, 2, 3, 1,
+  1, 2, 2, 3,
+  3, 2, 1, 3
+])
