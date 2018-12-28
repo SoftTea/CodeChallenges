@@ -768,12 +768,90 @@
 
 // 4 By 4 Skyscrapers
 
-function solvePuzzle (clues) {
-    // Start your coding here...
-    
+// 1.  Loop through clues and look up items in corresponding row/column  (++)
+// 2. if( there is a clue for column /row)
+          //then ( follow clue till possible solution found) 
+                  // then( if another row/column intersects and has a clue) 
+                  // Attempt to follow rule 
+                  // if unable to produce succesful row/collum  then go back to previous column/row and rearrrange with a different possible solution
+                  
+
+function solvePuzzle(clues) {
+  // Start your coding here...
+  let topClues = clues.slice(0, 4)
+
+  let rightClues = clues.slice(4, 8)
+
+  let bottomClues = clues.slice(8, 12).reverse()
+
+  let leftClues = clues.slice(12,clues.length).reverse()
+  
+
+
+  let result = [
+    [1, 2, 3, 4],
+    [1, 2, 3, 4],
+    [1, 2, 3, 4],
+    [1, 2, 3, 4]
+  ]
+
+  for (let i = 0; i < topClues.length; i++) {
+    if (topClues[i]> 0) {
+      for (let j = 0; j < 4; j++) {
+      // console.log('clue', topClues[i])
+      // console.log('top', result[j][i])
+      }
+    }
+  }
+
+  for (let i = 0; i < rightClues.length; i++) {
+    if (rightClues[i]> 0) {
+      for (let j = 3; j > -1; j--) {
+      // console.log('clue', rightClues[i])
+      // console.log('right', result[i][j])
+      }
+    }
+  }
+
+  for (let i = 0; i < bottomClues.length; i++) {
+    if (bottomClues[i]> 0) {
+      for (let j = 3; j > -1; j--) {
+      // console.log('clue', rightClues[i])
+      // console.log('bottom', result[j][i])
+      }
+    }
+  }
+
+  for (let i = 0; i < leftClues.length; i++) {
+    if (leftClues[i]> 0) {
+      for (let j = 0; j <4; j++) {
+      console.log('clue', leftClues[i])
+      console.log('left', result[i][j])
+      }
+    }
+  }
+
+
+  // for (let i = 0; i < clues.length; i++) {
+  //   if (clues[i] > 0 && i < 4) {
+  //     for (let j = 0; j < 4; j++) {
+  //       console.log('top', result[j][i])
+  //     }
+  //   } else if (clues[i] > 0 && i < 8) {
+  //     for (let j = 3; j > -1; j--) {
+  //       console.log('right', result[i - 4][j])
+  //     }
+  //   } else if (clues[i] > 0 && i < 12) {
+
+  //     for (let j = 3; j > -1; j--) {
+  //       console.log('bottom', result[j][i])
+  //     }
+  //   }
+  // }
+
 }
 
-solvePuzzel ( [
+solvePuzzle([
   2, 2, 1, 3,
   2, 2, 3, 1,
   1, 2, 2, 3,
