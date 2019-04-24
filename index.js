@@ -768,14 +768,314 @@
 
 // 4 By 4 Skyscrapers
 
-function solvePuzzle (clues) {
-    // Start your coding here...
-    
+// function solvePuzzle (clues) {
+//     // Start your coding here...
+
+// }
+
+// solvePuzzel ( [
+//   2, 2, 1, 3,
+//   2, 2, 3, 1,
+//   1, 2, 2, 3,
+//   3, 2, 1, 3
+// ])
+
+// function sockMerchant (n ,arr) {
+//   arr.sort()
+//   totalPairs = 0
+//   for (let i= n-1 ; i>0 ; i--) {
+//     if(arr[i] === arr[i-1]) {
+//       totalPairs++;
+//       i--
+//     }
+//   }
+//   return totalPairs
+// }
+
+// console.log (sockMerchant ( 9 , [10, 20, 20, 10, 10 ,30, 50, 10 ,20]) );
+
+// function countingValleys (n,s) {
+//   let valleyCount = 0;
+//   let altitude = 0;
+
+//   for (let i = 0 ; i < n ; i++) {
+//     let prevAltitude = altitude
+//     if (s[i] === 'U') {
+//       altitude ++
+//     } else {
+//       altitude--
+//     }
+//     if (prevAltitude < 0 && altitude === 0) {
+//       valleyCount++
+//     }
+//   }
+
+//   return valleyCount
+// }
+
+
+// console.log( countingValleys(8, 'DDUUUUDD') )
+
+// function jumpingOnClouds (c) {
+//   let jumps = 0;
+
+//   for(let i = 0 ; i<c.length-1 ; i++) {
+
+//     if (c[i+2] === 0) {
+//       jumps++
+//       i++
+//     } else {
+//       jumps++
+//     }
+
+//   }
+
+//   return jumps
+// }
+
+// console.log(jumpingOnClouds([0,0,0,0,1,0]))
+
+// function repeatedStrings(s,n) {
+//   let totalA = 0;
+//   let regex = /a/g
+//   let aInString = s.match(regex) ? s.match(regex).length : 0 
+//   let stringLength = s.length;
+//   let stringRemainder = n % stringLength
+//   let repeatStringNumber = (n - stringRemainder) / stringLength
+//   totalA += repeatStringNumber * aInString
+
+
+
+//   for (let i = 0; i< stringRemainder; i++) {
+
+//     if (s[i] === 'a') {
+//       totalA++
+//     }
+//   }
+
+//   return totalA
+// }
+
+
+// console.log(repeatedStrings('wwwwww', 10) )
+
+
+// function checkMagazine(magazine, note) {
+
+//    let replicable = true
+//    let magazineGettingCut = magazine
+
+//    for ( let i = 0 ; i < note.length; i++) {
+//      if ( !magazineGettingCut.includes(note[i]) ) {
+//        replicable = false 
+//        break
+//      } else {
+
+//        let magazineIndex = magazineGettingCut.indexOf(note[i]);
+
+//        magazineGettingCut.splice(magazineIndex, 1);
+
+//      }
+//    }
+
+//    console.log(replicable ? 'Yes' : 'No');
+
+
+
+// }
+
+// console.log(checkMagazine (['give', 'me', 'one', 'grand', 'today', 'night'] , ['give' ,'stugg', 'grand' ,'today'] ))
+
+
+// function countSwaps (a) {
+//   let arrayLength = a.length 
+//   let numSwaps = 0
+
+//   for (let i = 0; i < arrayLength - 1 ; i ++) {
+
+//     for (let j = 0; j < arrayLength - 1 ; j++) {
+//       if (a[j] > a[j + 1]) {
+//         let movedEl = a[j+1];
+//         a[j+1] = a[j];
+//         a[j] = movedEl;
+//         numSwaps++
+//       }
+//     }
+//   }
+//   console.log(`Array is sorted in ${numSwaps} swaps.`)
+//   console.log(`First Element: ${a[0]}`)  
+//   console.log( `Last Element:${a[arrayLength-1]}`)
+//   return;
+// }
+
+// console.log(countSwaps([3,2,1]) )
+
+// console.log({} ['test'])
+
+// function fetchProfile(api) {
+//   return api.fetchCompany().then(res => {
+//     let companyName = res.data.name
+//     return api.fetchCompanyEmployees(res.data.id).then(res => {
+//       return {
+//         company: companyName,
+//         employees: res.data.employees
+//       }
+//     })
+//   }).catch(e => console.log(e, 'Error in fetchProfile promises'))
+// }
+
+// function toTree(data) {
+//   // first lets make sure our id's are sorted 
+//   data.sort((a,b) =>  a.id - b.id )
+//   let root;
+
+//   for (let i = 0; i < data.length; i++) {
+//     if (data[i].parent === null) {
+//       root = data[i]
+//       data.splice(i,1)
+//     }
+//   }
+//   for(let i = 0; i<data.length; i ++) {
+//     if(data[i].parent === root.id) {
+//       root.children = [];
+//       root.children.push(data[i]);
+//       data.splice(i,1)
+
+//       }
+//   }
+
+//   for (let i = 0 ; i <data.length; i++) {
+//     for (let j = 0; j < root.children.length; j++) {
+//       if (root.children[j].id === data[i].parent ) {
+//         root.children[j].children = [];
+//         root.children[j].children.push(data[i])
+//         data.splice(i,1);
+
+//       }
+//     }
+//   }
+
+//   console.log(root.children[0].children)
+//   return root 
+
+// }
+
+
+let testVar = [{
+  id: 1,
+  parent: null,
+  value: 'Make breakfast'
+},
+{
+  id: 2,
+  parent: 1,
+  value: 'Brew coffee'
+},
+{
+  id: 3,
+  parent: 2,
+  value: 'Boil water'
+},
+{
+  id: 4,
+  parent: 2,
+  value: 'Grind coffee beans'
+},
+{
+  id: 5,
+  parent: 2,
+  value: 'Pour water over coffee grounds'
+}
+]
+
+function toTree(arr) {
+
+  const root = [];
+
+  arr.forEach(node => {
+    // No parent means top level
+    if (!node.parent) return root.push(node);
+
+    // Insert node as child of parent in arr array
+    const parentIndex = arr.findIndex(el => el.id === node.parent);
+    if (!arr[parentIndex].children) {
+      return arr[parentIndex].children = [node];
+    }
+
+    arr[parentIndex].children.push(node);
+  });
+
+  console.log(root)
+  return root
 }
 
-solvePuzzel ( [
-  2, 2, 1, 3,
-  2, 2, 3, 1,
-  1, 2, 2, 3,
-  3, 2, 1, 3
-])
+// function getNestedChildren(arr, parent) {
+//   var out = []
+//   for(var i in arr) {
+//       if(arr[i].parent == parent) {
+//           var children = getNestedChildren(arr, arr[i].id)
+
+//           if(children.length) {
+//               arr[i].children = children
+//           }
+//           out.push(arr[i])
+//       }
+//   }
+//   return out
+// }
+
+
+// var arr = [
+//   {'id':1 ,'parentid' : 0},
+//   {'id':4 ,'parentid' : 2},
+//   {'id':3 ,'parentid' : 1},
+//   {'id':5 ,'parentid' : 0},
+//   {'id':6 ,'parentid' : 0},
+//   {'id':2 ,'parentid' : 1},
+//   {'id':7 ,'parentid' : 4},
+//   {'id':8 ,'parentid' : 1}
+// ];
+// function unflatten(arr) {
+// var tree = [],
+//     mappedArr = {},
+//     arrElem,
+//     mappedElem;
+
+// // First map the nodes of the array to an object -> create a hash table.
+// for(var i = 0, len = arr.length; i < len; i++) {
+//   arrElem = arr[i];
+//   mappedArr[arrElem.id] = arrElem;
+//   mappedArr[arrElem.id]['children'] = [];
+// }
+
+
+// for (var id in mappedArr) {
+//   if (mappedArr.hasOwnProperty(id)) {
+//     mappedElem = mappedArr[id];
+//     // If the element is not at the root level, add it to its parent array of children.
+//     if (mappedElem.parentid) {
+//       mappedArr[mappedElem['parentid']]['children'].push(mappedElem);
+//     }
+//     // If the element is at the root level, add it to first level elements array.
+//     else {
+//       tree.push(mappedElem);
+//     }
+//   }
+// }
+// return tree;
+// }
+
+// var tree = unflatten(arr);
+// console.log(tree);
+
+
+function traverse(data, parentId) {
+  const children = data.filter(each => each.parent === parentId);
+  children.forEach(child => {
+    child.subcategories = traverse(data, child.id);
+  });
+  console.log(children)
+  return children;
+}
+
+console.log( traverse(testVar, null) )
