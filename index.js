@@ -1069,6 +1069,16 @@ function toTree(arr) {
 // console.log(tree);
 
 
+// Traverse is a function which accepts an [Arr of objects with properties of parent and id ] and a parrentId which desinates the parent node's id
+
+// 1.  Filter the array to only those objects whose parent is the parentId (children is either an empty arr or an arr with object elements )
+
+// 2. For every child of the parentNode add property of subcatergories which recursively calls the traverse function with the paramters of: same data arr given during first call , but using this child element as the parent id
+
+// the recursive call will return either another filter arr with objects or an empty arr
+
+// our base case (i believe ) is the [] returned when there are no nodes with the parentId passed to the traverse function , in which case the forEach never calls
+
 function traverse(data, parentId) {
   const children = data.filter(each => each.parent === parentId);
   children.forEach(child => {
