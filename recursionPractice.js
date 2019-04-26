@@ -82,26 +82,43 @@ console.log(testStr)
 
 
 /////////////// ARTICLE'S SOLUTION //////////
+// Their solution is most likely better than mine given that apparently concatanation is apparently fairlt costly. Also my solution used regex that goes through the whole string for letter duplications. I'm pretty sure I've heard regex can be fairly costly as well 
+
+// Their solution makes use of a map object look up that would be way faster 
+
+// One main take away from this example is the use of scope in manipulating the scoped objects out side of the recurive function calls 
+
 function removeReoccurringCharacters(str) {
+    //1. Check if str is a empty, if empty throw error, if not, carry on
     if (typeof str !== "string") {
         throw new Error("Please enter a string!");
     }
+    // init our charMap + result 
+    // CharMap is going to keep track of which characters have already been used 
+    // because the order of the results matter we will keep their order as they are removed in the results array.
+
     var charMap = {};
     var result = [];
+
+    // removeRepeatingChar is actually our recursive function 
+
     var removeRepeatingChar = function(str) {
         var len = str.length;
         // base case
         if (len === 0) {
             return str;
         }
-        var firstChar = str.charAt(0);
-        if (!charMap.hasOwnProperty(firstChar)) {
+
+        var firstChar = str.charAt(0); 
+        if (!charMap.hasOwnProperty(firstChar)) { // check if the firstChar is a prop of our Map -- if it isnt then 
             charMap[firstChar] = true;  // mark as having occurred
             result.push(firstChar);     // push into results
         }
-        removeRepeatingChar(str.substring(1, len));
+        removeRepeatingChar(str.substring(1, len)); // call our function again but this time cut off the first indexed letter with substring method 
     };
-    removeRepeatingChar(str);
+
+
+    removeRepeatingChar(str); // our function call
     return result.join('');
 }
 
