@@ -1,4 +1,5 @@
-
+// examples and tutorial from The Coding Delight
+// https://www.thecodingdelight.com/understanding-recursion-javascript/
 
 // reverseStr("cowbell") --> "llebwoc"
 
@@ -7,10 +8,10 @@
 function reverseStr(str) {
     if (str === '') {
         return ''
-    } 
-    let lastletter = str[str.length-1]
-    
-    return lastletter + reverseStr(str.substring(0,str.length-1))
+    }
+    let lastletter = str[str.length - 1]
+
+    return lastletter + reverseStr(str.substring(0, str.length - 1))
 }
 
 // console.log( reverseStr("cat") )
@@ -38,16 +39,16 @@ function reverseStr(str) {
 // In the example of recursion we may think of the answer to a question as leading to another question.  What is the fib of 4? Well it is the fib of 2 + fib of 3, well what is the fib of 2 or fib of 3? Well the fib of 2 is fib of 1 + fib of 0 ,(etc) 
 
 
-function fibonacci (position) {
+function fibonacci(position) {
     if (position <= 0) {
-        return 0 
-    } 
+        return 0
+    }
     if (position === 1) {
         return 1
     }
 
-    return fibonacci(position-1) + fibonacci(position-2)
-} 
+    return fibonacci(position - 1) + fibonacci(position - 2)
+}
 
 // console.log ( fibonacci(15) )
 
@@ -59,26 +60,26 @@ function fibonacci (position) {
 // removeDupLetter ('Troll') = > trol
 // removeDupLetter ('abracadabra') = > abrcd
 
-function removeDupLetter (str) {
+function removeDupLetter(str) {
 
     if (str.length <= 0) {
         return ''
-    } 
+    }
 
     let firstLetter = str[0]
 
     let regex = new RegExp(firstLetter, 'gi')
 
-    str = str.replace(regex,'')
+    str = str.replace(regex, '')
 
 
     return firstLetter + removeDupLetter(str)
-    
+
 }
 
-let testStr = 'ttttrrrrroooolll'
-console.log( removeDupLetter(testStr) )
-console.log(testStr)
+// let testStr = 'ttttrrrrroooolll'
+// console.log( removeDupLetter(testStr) )
+// console.log(testStr)
 
 
 /////////////// ARTICLE'S SOLUTION //////////
@@ -102,17 +103,17 @@ function removeReoccurringCharacters(str) {
 
     // removeRepeatingChar is actually our recursive function 
 
-    var removeRepeatingChar = function(str) {
+    var removeRepeatingChar = function (str) {
         var len = str.length;
         // base case
         if (len === 0) {
             return str;
         }
 
-        var firstChar = str.charAt(0); 
+        var firstChar = str.charAt(0);
         if (!charMap.hasOwnProperty(firstChar)) { // check if the firstChar is a prop of our Map -- if it isnt then 
-            charMap[firstChar] = true;  // mark as having occurred
-            result.push(firstChar);     // push into results
+            charMap[firstChar] = true; // mark as having occurred
+            result.push(firstChar); // push into results
         }
         removeRepeatingChar(str.substring(1, len)); // call our function again but this time cut off the first indexed letter with substring method 
     };
@@ -122,4 +123,52 @@ function removeReoccurringCharacters(str) {
     return result.join('');
 }
 
-console.log(removeReoccurringCharacters("creeeedisgiiiid")); 
+// console.log(removeReoccurringCharacters("creeeedisgiiiid")); 
+
+
+//Count the number of reoccurring instances of a digit in a number (E.g. 79092342 has two 9s). For bonus points, create a generator function using closures to create a recursive function using the value passed.
+// E.g. Function can generate instances such as
+// count7, count8
+// which counts for the digits 7 and 8 respectively.
+
+// example of our  function digitCounter(number, digitToCount) 
+
+function digitCounter(number, digitToCount) {
+    if (typeof number !== 'number' || typeof digitToCount !== 'number') {
+        throw 'Either the parameter number or digitToCount is not of type number';
+    }
+
+    let stringNum = number.toString();
+
+    let digitToCountStr = digitToCount.toString();
+
+
+    let occuranceCounter = 0;
+
+    function recursiveDigitCount() {
+
+        if (stringNum === '') {
+            return ''
+        }
+
+        if (stringNum[0] === digitToCountStr) {
+
+            occuranceCounter += 1
+        }
+
+        stringNum = stringNum.substring(1)
+
+
+        return recursiveDigitCount()
+
+    }
+
+    recursiveDigitCount();
+
+    return occuranceCounter
+
+
+}
+
+
+console.log(digitCounter(2214201548, 1))
