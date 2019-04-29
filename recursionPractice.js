@@ -194,4 +194,25 @@ function digitCounterTwo (num, targetNum) {
     }
 }
 
-console.log ( digitCounterTwo (2001220155,5) )
+// console.log ( digitCounterTwo (2001220155,5) )
+
+// Attempting to make a Generator function for the digitial counter 
+
+function* digitCounterGen (num) {
+    for (let i = 0; i < 10 ; i++  ) {
+        yield `There are ${digitCounterTwo(num, i)} number: ${i} in ${num}`
+    }
+}
+
+let gen = digitCounterGen(1154879884165016551080780514065101)
+
+for (let digit of gen) {
+    console.log(digit)
+}
+
+// console.log(gen.next())
+// console.log(gen.next().value)
+// console.log(gen.next().value)
+// console.log(gen.next().value)
+// console.log(gen.next().value)
+// console.log(gen.next().value)
