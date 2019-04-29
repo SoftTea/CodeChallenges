@@ -171,4 +171,27 @@ function digitCounter(number, digitToCount) {
 }
 
 
-console.log(digitCounter(2214201548, 1))
+// console.log(digitCounter(2214201548, 1))
+
+function digitCounterTwo (num, targetNum) {
+    if (typeof num === 'string' || typeof targetNum === 'string') {
+        // console.log(num)
+        if (num === '') {
+            return 0
+        }
+        
+        if( num[0] === targetNum) {
+
+            return 1 + digitCounterTwo(num.substring(1), targetNum)
+        } 
+        return 0 + digitCounterTwo(num.substring(1), targetNum)
+
+    } 
+
+    if (typeof num !== 'string' || typeof targetNum !== 'string') {
+        
+        return digitCounterTwo(num.toString(), targetNum.toString())
+    }
+}
+
+console.log ( digitCounterTwo (2001220155,5) )
