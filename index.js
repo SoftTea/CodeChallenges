@@ -1126,7 +1126,31 @@ function hourglassSum(arr) {
 
 // console.log(twoDemArr[3][9])
 
-console.log( hourglassSum(twoDemArr) ) ;
+// console.log( hourglassSum(twoDemArr) ) ;
 
-console.log(NaN > -1)
+// console.log(NaN > -1)
 
+// let testArr = [1,2,3,4]
+// let copyArr = testArr.slice()
+// copyArr.pop()
+// console.log(testArr);
+
+
+function rotLeft (a,d) {
+
+  let aLength = a.length
+  let rotateMod = d % aLength
+
+  for (let i = 0; i < rotateMod ; i++) {
+
+
+      a.push(a.shift())
+
+      
+    }
+  return a 
+
+}
+
+
+console.log ( rotLeft([1,2,3,4,5], 2) )
