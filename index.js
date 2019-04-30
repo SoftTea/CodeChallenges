@@ -1088,4 +1088,45 @@ function traverse(data, parentId) {
   return children;
 }
 
-console.log( traverse(testVar, null) )
+// console.log( traverse(testVar, null) )
+
+
+let twoDemArr = [
+  [0,-4,-6,0,-7,-6 ] ,
+  [-1 ,-2, -6, -8, -3, -1 ] ,
+  [-8 ,-4 ,-2, -8, -8 ,-6 ] , 
+  [ -3 ,-1 ,-2 ,-5 ,-7, -4 ] ,
+  [-3 ,-5, -3, -6, -6, -6 ] ,
+  [-3 ,-6 ,0 ,-8 ,-6 ,-7 ]
+]
+
+function hourglassSum(arr) {
+
+  let highestHourglassSum = -Infinity
+  for (let i = 0 ; i < arr.length; i++) {
+    
+    if (arr[i+2] == undefined) {
+      break
+    }
+
+    for (let j = 0 ; j < arr[i].length; j++) {
+   
+      
+     let currentValue = arr[i][j] + arr[i][j-1] + arr[i][j+1] + arr[i+1][j] + arr[i+2][j] + arr[i+2][j+1] + arr[i+2][j-1]
+
+     highestHourglassSum = currentValue > highestHourglassSum ? currentValue : highestHourglassSum
+    }
+  }
+
+  return highestHourglassSum
+
+}
+
+
+
+// console.log(twoDemArr[3][9])
+
+console.log( hourglassSum(twoDemArr) ) ;
+
+console.log(NaN > -1)
+
