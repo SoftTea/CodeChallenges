@@ -1153,4 +1153,29 @@ function rotLeft (a,d) {
 }
 
 
-console.log ( rotLeft([1,2,3,4,5], 2) )
+// console.log ( rotLeft([1,2,3,4,5], 2) )
+
+function rotLeftTwo (a,d) {
+
+  let aLength = a.length
+  let rotateMod = d % aLength
+
+  let aCopy = a.slice(0)
+
+
+  for (let i = 0; i < aLength ; i++) {
+    let newIndex = i-rotateMod
+
+    if(newIndex < 0) {
+      newIndex = aLength + newIndex
+    }
+
+    aCopy[newIndex] = a[i]
+    
+  }
+   
+    return aCopy
+
+}
+
+console.log(rotLeftTwo([1,2,3,4,5], 1))
