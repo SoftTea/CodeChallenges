@@ -1231,9 +1231,60 @@ function minBribe(q) {
 
 }
 
+function minBribeTwo(q) {
+
+  const arrayLength = q.length
+  let originalArray = []
+  let numOfBribes = 0
+
+  for (let i = 0 ; i< arrayLength ; i++ ) {
+    originalArray.push(i+1)
+
+    const diffBetween = q[i] - originalArray[i]
+
+
+    if (diffBetween > 2) {
+      console.log('Too chaotic')
+      return 'Too chaotic'
+    }
+  }
+
+  for (let i = 0 ; i< arrayLength ; i++ ) {
+
+    
+
+
+   if(q[i] === originalArray[i]) {
+
+   } else if (q[i]=== originalArray[i+1]) {
+     let currItem = originalArray[i]
+     originalArray[i] = originalArray[i+1]
+     originalArray[i+1] = currItem
+     
+     numOfBribes++
+   } else if (q[i]=== originalArray[i+2]) {
+    let currItem = originalArray[i]
+    originalArray[i] = originalArray[i+2]
+    originalArray[i+2] = originalArray[i+1]
+    originalArray[i+1] = currItem
+    
+    numOfBribes+=2
+  }
+
+}
+
+  
+  console.log(numOfBribes)
+  return numOfBribes
+  // console.log(originalArray)
+
+
+
+} 
+
 // console.log( minBribe([2,1]) )
 
-minBribe([1, 2, 5, 3, 7, 8, 6, 4]) // 7
+minBribeTwo([2,5,1,3,4]) // 7
 
 // let arr= []
 // arr[3] = 3
