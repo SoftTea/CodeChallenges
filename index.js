@@ -1155,27 +1155,112 @@ function rotLeft (a,d) {
 
 // console.log ( rotLeft([1,2,3,4,5], 2) )
 
-function rotLeftTwo (a,d) {
+// function rotLeftTwo (a,d) {
 
-  let aLength = a.length
-  let rotateMod = d % aLength
+//   let aLength = a.length
+//   let rotateMod = d % aLength
 
-  let aCopy = a.slice(0)
+//   let aCopy = a.slice(0)
 
 
-  for (let i = 0; i < aLength ; i++) {
-    let newIndex = i-rotateMod
+//   for (let i = 0; i < aLength ; i++) {
+//     let newIndex = i-rotateMod
 
-    if(newIndex < 0) {
-      newIndex = aLength + newIndex
+//     if(newIndex < 0) {
+//       newIndex = aLength + newIndex
+//     }
+
+//     aCopy[newIndex] = a[i]
+    
+//   }
+   
+//     return aCopy
+
+// }
+
+// console.log(rotLeftTwo([1,2,3,4,5], 1))
+
+// Notes on minBribe: 
+// Original starting position  === q[i] -1
+
+// if i < originalIndex - 2 
+// then too chaotic
+
+// if CurrentI(i) > Original I = 0 bribes
+
+// q[i] - Orriginal[i] = 0 no bribe 
+// q[i] - Orriginal[i] < 0 no bribe
+// q[i] - Orriginal[i] > 0 < 3 value for bribe 
+
+function minBribe(q) {
+
+  const arrayLength = q.length
+  let originalArray = []
+  let numOfBribes = 0
+
+  for (let i = 0 , j = 1 ; i < arrayLength ; i++, j++) {
+
+
+    originalArray [i] = j
+    const diffBetween = q[i] - originalArray[i]
+
+
+    if (diffBetween > 2) {
+      console.log('Too chaotic')
+      return 'Too chaotic'
     }
 
-    aCopy[newIndex] = a[i]
-    
-  }
+   for (let p = i; p < arrayLength ; p++) {
+
+    if(q[i] > q[p]) {
+      numOfBribes++
+    }
+   }
+
    
-    return aCopy
+
+
+
+  }
+
+  console.log(numOfBribes)
+  return numOfBribes
+  // console.log(originalArray)
+
+
 
 }
 
-console.log(rotLeftTwo([1,2,3,4,5], 1))
+// console.log( minBribe([2,1]) )
+
+minBribe([1, 2, 5, 3, 7, 8, 6, 4]) // 7
+
+// let arr= []
+// arr[3] = 3
+// console.log( arr[2] )
+
+ // if (q[i] < q[i-2]) {
+    //   let currentI = q[i];
+
+    //   const newStartIndex = (i-3 < -1 ) ? -1 : i-3 
+
+    //   q.splice(i,1)
+    //   q.splice(i-2,0,currentI)
+
+    //   numOfBribes+=2
+
+    //   i = newStartIndex
+      
+    // } else if (q[i] < q[i-1]) {
+    //   let currentI = q[i];
+
+    //   const newStartIndex = (i-2 < -1 ) ? -1 : i-2 
+
+    //   q.splice(i,1)
+    //   q.splice(i-1,0,currentI)
+
+    //   numOfBribes+=1
+
+    //   i = newStartIndex
+
+    // }
