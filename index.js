@@ -1355,4 +1355,31 @@ function minSwapsTwo (arr) {
 
 }
 
-minSwapsTwo([7, 1, 3, 2, 4, 5, 6])
+// minSwapsTwo([7, 1, 3, 2, 4, 5, 6])
+
+function arrayManipulation(n, queries) {
+  let mainArr = new Array(n).fill(0);
+  let highestValue = 0;
+  
+  for (let i = 0 ; i< queries.length ; i++) {
+    const beginningIndex = queries[i][0]-1;
+    const endIndex = queries[i][1] -1;
+    const addedValue = queries[i][2];
+
+    for (let j = beginningIndex; j <= endIndex ; j++) {
+      mainArr[j] += addedValue
+    }
+  
+  }
+
+  highestValue = mainArr.sort( (a,b)=>  b - a )[0]
+  
+  console.log(highestValue)
+  return highestValue;
+
+  
+}
+
+// arrayManipulation(10 , [[1,5,3] , [4,8,7] , [6 , 9, 1]])
+
+arrayManipulation(5 , [[1,2,100] , [2,5,100] , [3 , 4, 100]])
