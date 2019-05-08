@@ -1284,7 +1284,7 @@ function minBribeTwo(q) {
 
 // console.log( minBribe([2,1]) )
 
-minBribeTwo([2,5,1,3,4]) // 7
+// minBribeTwo([2,5,1,3,4]) // 7
 
 // let arr= []
 // arr[3] = 3
@@ -1315,3 +1315,44 @@ minBribeTwo([2,5,1,3,4]) // 7
     //   i = newStartIndex
 
     // }
+
+
+
+// Min Swaps 2 
+
+function minSwapsTwo (arr) {
+  let valueKeyForArr = [];
+  let numOfSwaps = 0;
+
+  for (let i = 0; i < arr.length ; i++) {
+    let arrValue = arr[i]
+    valueKeyForArr[arrValue] = i
+  }
+
+  for (let i = 0 ; i < arr.length; i++) {
+    let expectedValue = i + 1
+
+    if (arr[i] !== expectedValue ) {
+      let indexOfExpectedValue = valueKeyForArr[expectedValue];
+
+      valueKeyForArr[ arr[i] ] = valueKeyForArr[expectedValue]
+      valueKeyForArr[expectedValue] = i
+      
+
+      arr[indexOfExpectedValue] = arr[i]
+      arr[i] = expectedValue
+
+      
+
+      numOfSwaps++
+
+
+
+    }
+  }
+  console.log(numOfSwaps);
+  return numOfSwaps;
+
+}
+
+minSwapsTwo([7, 1, 3, 2, 4, 5, 6])
