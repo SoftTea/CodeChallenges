@@ -1368,11 +1368,15 @@ function arrayManipulation(n, queries) {
 
     for (let j = beginningIndex; j <= endIndex ; j++) {
       mainArr[j] += addedValue
+
+      if (mainArr[j] > highestValue) {
+        highestValue = mainArr[j];
+      }
     }
   
   }
 
-  highestValue = mainArr.sort( (a,b)=>  b - a )[0]
+  // highestValue = mainArr.sort( (a,b)=>  b - a )[0]
   
   console.log(highestValue)
   return highestValue;
@@ -1382,4 +1386,52 @@ function arrayManipulation(n, queries) {
 
 // arrayManipulation(10 , [[1,5,3] , [4,8,7] , [6 , 9, 1]])
 
-arrayManipulation(5 , [[1,2,100] , [2,5,100] , [3 , 4, 100]])
+
+
+
+function arrayManipulationTwo(n, queries) {
+  let mainArr = new Array(queries.length).fill(new Array(n));
+  let highestValue = 0;
+  
+  for (let i = 0 ; i< queries.length ; i++) {
+    const beginningIndex = queries[i][0]-1;
+    const endIndex = queries[i][1] -1;
+    const addedValue = queries[i][2];
+
+    // console.log(i)
+    mainArr[i].fill(addedValue, beginningIndex)
+    console.log( mainArr[i] )
+  
+  }
+
+  // highestValue = mainArr.sort( (a,b)=>  b - a )[0]
+  
+  console.log(mainArr)
+  return highestValue;
+
+  
+}
+
+// arrayManipulationTwo(5 , [[1,2,100] , [2,5,200] , [1 , 4, 300]])
+
+function twoStrings (s1, s2) {
+  let hashMap = {};
+
+  for (let i = 0 ; i < s1.length ; i ++) {
+    if (!hashMap[s1[i]]) {
+      hashMap[s1[i]] = true;
+    }
+  }
+
+  for (let i = 0 ; i < s2.length ; i++) {
+    if (hashMap[s2[i]]) {
+      console.log('YES')
+      return 'YES'
+    }
+  }
+
+  console.log ('NO')
+  return 'NO'
+}
+
+twoStrings('hi', 'world')
