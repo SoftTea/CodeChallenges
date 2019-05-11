@@ -962,30 +962,30 @@
 
 
 let testVar = [{
-  id: 1,
-  parent: null,
-  value: 'Make breakfast'
-},
-{
-  id: 2,
-  parent: 1,
-  value: 'Brew coffee'
-},
-{
-  id: 3,
-  parent: 2,
-  value: 'Boil water'
-},
-{
-  id: 4,
-  parent: 2,
-  value: 'Grind coffee beans'
-},
-{
-  id: 5,
-  parent: 2,
-  value: 'Pour water over coffee grounds'
-}
+    id: 1,
+    parent: null,
+    value: 'Make breakfast'
+  },
+  {
+    id: 2,
+    parent: 1,
+    value: 'Brew coffee'
+  },
+  {
+    id: 3,
+    parent: 2,
+    value: 'Boil water'
+  },
+  {
+    id: 4,
+    parent: 2,
+    value: 'Grind coffee beans'
+  },
+  {
+    id: 5,
+    parent: 2,
+    value: 'Pour water over coffee grounds'
+  }
 ]
 
 function toTree(arr) {
@@ -1092,29 +1092,29 @@ function traverse(data, parentId) {
 
 
 let twoDemArr = [
-  [0,-4,-6,0,-7,-6 ] ,
-  [-1 ,-2, -6, -8, -3, -1 ] ,
-  [-8 ,-4 ,-2, -8, -8 ,-6 ] , 
-  [ -3 ,-1 ,-2 ,-5 ,-7, -4 ] ,
-  [-3 ,-5, -3, -6, -6, -6 ] ,
-  [-3 ,-6 ,0 ,-8 ,-6 ,-7 ]
+  [0, -4, -6, 0, -7, -6],
+  [-1, -2, -6, -8, -3, -1],
+  [-8, -4, -2, -8, -8, -6],
+  [-3, -1, -2, -5, -7, -4],
+  [-3, -5, -3, -6, -6, -6],
+  [-3, -6, 0, -8, -6, -7]
 ]
 
 function hourglassSum(arr) {
 
   let highestHourglassSum = -Infinity
-  for (let i = 0 ; i < arr.length; i++) {
-    
-    if (arr[i+2] == undefined) {
+  for (let i = 0; i < arr.length; i++) {
+
+    if (arr[i + 2] == undefined) {
       break
     }
 
-    for (let j = 0 ; j < arr[i].length; j++) {
-   
-      
-     let currentValue = arr[i][j] + arr[i][j-1] + arr[i][j+1] + arr[i+1][j] + arr[i+2][j] + arr[i+2][j+1] + arr[i+2][j-1]
+    for (let j = 0; j < arr[i].length; j++) {
 
-     highestHourglassSum = currentValue > highestHourglassSum ? currentValue : highestHourglassSum
+
+      let currentValue = arr[i][j] + arr[i][j - 1] + arr[i][j + 1] + arr[i + 1][j] + arr[i + 2][j] + arr[i + 2][j + 1] + arr[i + 2][j - 1]
+
+      highestHourglassSum = currentValue > highestHourglassSum ? currentValue : highestHourglassSum
     }
   }
 
@@ -1136,19 +1136,19 @@ function hourglassSum(arr) {
 // console.log(testArr);
 
 
-function rotLeft (a,d) {
+function rotLeft(a, d) {
 
   let aLength = a.length
   let rotateMod = d % aLength
 
-  for (let i = 0; i < rotateMod ; i++) {
+  for (let i = 0; i < rotateMod; i++) {
 
 
-      a.push(a.shift())
+    a.push(a.shift())
 
-      
-    }
-  return a 
+
+  }
+  return a
 
 }
 
@@ -1171,9 +1171,9 @@ function rotLeft (a,d) {
 //     }
 
 //     aCopy[newIndex] = a[i]
-    
+
 //   }
-   
+
 //     return aCopy
 
 // }
@@ -1198,10 +1198,10 @@ function minBribe(q) {
   let originalArray = []
   let numOfBribes = 0
 
-  for (let i = 0 , j = 1 ; i < arrayLength ; i++, j++) {
+  for (let i = 0, j = 1; i < arrayLength; i++, j++) {
 
 
-    originalArray [i] = j
+    originalArray[i] = j
     const diffBetween = q[i] - originalArray[i]
 
 
@@ -1210,14 +1210,14 @@ function minBribe(q) {
       return 'Too chaotic'
     }
 
-   for (let p = i; p < arrayLength ; p++) {
+    for (let p = i; p < arrayLength; p++) {
 
-    if(q[i] > q[p]) {
-      numOfBribes++
+      if (q[i] > q[p]) {
+        numOfBribes++
+      }
     }
-   }
 
-   
+
 
 
 
@@ -1237,8 +1237,8 @@ function minBribeTwo(q) {
   let originalArray = []
   let numOfBribes = 0
 
-  for (let i = 0 ; i< arrayLength ; i++ ) {
-    originalArray.push(i+1)
+  for (let i = 0; i < arrayLength; i++) {
+    originalArray.push(i + 1)
 
     const diffBetween = q[i] - originalArray[i]
 
@@ -1249,38 +1249,38 @@ function minBribeTwo(q) {
     }
   }
 
-  for (let i = 0 ; i< arrayLength ; i++ ) {
-
-    
+  for (let i = 0; i < arrayLength; i++) {
 
 
-   if(q[i] === originalArray[i]) {
 
-   } else if (q[i]=== originalArray[i+1]) {
-     let currItem = originalArray[i]
-     originalArray[i] = originalArray[i+1]
-     originalArray[i+1] = currItem
-     
-     numOfBribes++
-   } else if (q[i]=== originalArray[i+2]) {
-    let currItem = originalArray[i]
-    originalArray[i] = originalArray[i+2]
-    originalArray[i+2] = originalArray[i+1]
-    originalArray[i+1] = currItem
-    
-    numOfBribes+=2
+
+    if (q[i] === originalArray[i]) {
+
+    } else if (q[i] === originalArray[i + 1]) {
+      let currItem = originalArray[i]
+      originalArray[i] = originalArray[i + 1]
+      originalArray[i + 1] = currItem
+
+      numOfBribes++
+    } else if (q[i] === originalArray[i + 2]) {
+      let currItem = originalArray[i]
+      originalArray[i] = originalArray[i + 2]
+      originalArray[i + 2] = originalArray[i + 1]
+      originalArray[i + 1] = currItem
+
+      numOfBribes += 2
+    }
+
   }
 
-}
 
-  
   console.log(numOfBribes)
   return numOfBribes
   // console.log(originalArray)
 
 
 
-} 
+}
 
 // console.log( minBribe([2,1]) )
 
@@ -1290,59 +1290,59 @@ function minBribeTwo(q) {
 // arr[3] = 3
 // console.log( arr[2] )
 
- // if (q[i] < q[i-2]) {
-    //   let currentI = q[i];
+// if (q[i] < q[i-2]) {
+//   let currentI = q[i];
 
-    //   const newStartIndex = (i-3 < -1 ) ? -1 : i-3 
+//   const newStartIndex = (i-3 < -1 ) ? -1 : i-3 
 
-    //   q.splice(i,1)
-    //   q.splice(i-2,0,currentI)
+//   q.splice(i,1)
+//   q.splice(i-2,0,currentI)
 
-    //   numOfBribes+=2
+//   numOfBribes+=2
 
-    //   i = newStartIndex
-      
-    // } else if (q[i] < q[i-1]) {
-    //   let currentI = q[i];
+//   i = newStartIndex
 
-    //   const newStartIndex = (i-2 < -1 ) ? -1 : i-2 
+// } else if (q[i] < q[i-1]) {
+//   let currentI = q[i];
 
-    //   q.splice(i,1)
-    //   q.splice(i-1,0,currentI)
+//   const newStartIndex = (i-2 < -1 ) ? -1 : i-2 
 
-    //   numOfBribes+=1
+//   q.splice(i,1)
+//   q.splice(i-1,0,currentI)
 
-    //   i = newStartIndex
+//   numOfBribes+=1
 
-    // }
+//   i = newStartIndex
+
+// }
 
 
 
 // Min Swaps 2 
 
-function minSwapsTwo (arr) {
+function minSwapsTwo(arr) {
   let valueKeyForArr = [];
   let numOfSwaps = 0;
 
-  for (let i = 0; i < arr.length ; i++) {
+  for (let i = 0; i < arr.length; i++) {
     let arrValue = arr[i]
     valueKeyForArr[arrValue] = i
   }
 
-  for (let i = 0 ; i < arr.length; i++) {
+  for (let i = 0; i < arr.length; i++) {
     let expectedValue = i + 1
 
-    if (arr[i] !== expectedValue ) {
+    if (arr[i] !== expectedValue) {
       let indexOfExpectedValue = valueKeyForArr[expectedValue];
 
-      valueKeyForArr[ arr[i] ] = valueKeyForArr[expectedValue]
+      valueKeyForArr[arr[i]] = valueKeyForArr[expectedValue]
       valueKeyForArr[expectedValue] = i
-      
+
 
       arr[indexOfExpectedValue] = arr[i]
       arr[i] = expectedValue
 
-      
+
 
       numOfSwaps++
 
@@ -1360,28 +1360,28 @@ function minSwapsTwo (arr) {
 function arrayManipulation(n, queries) {
   let mainArr = new Array(n).fill(0);
   let highestValue = 0;
-  
-  for (let i = 0 ; i< queries.length ; i++) {
-    const beginningIndex = queries[i][0]-1;
-    const endIndex = queries[i][1] -1;
+
+  for (let i = 0; i < queries.length; i++) {
+    const beginningIndex = queries[i][0] - 1;
+    const endIndex = queries[i][1] - 1;
     const addedValue = queries[i][2];
 
-    for (let j = beginningIndex; j <= endIndex ; j++) {
+    for (let j = beginningIndex; j <= endIndex; j++) {
       mainArr[j] += addedValue
 
       if (mainArr[j] > highestValue) {
         highestValue = mainArr[j];
       }
     }
-  
+
   }
 
   // highestValue = mainArr.sort( (a,b)=>  b - a )[0]
-  
+
   console.log(highestValue)
   return highestValue;
 
-  
+
 }
 
 // arrayManipulation(10 , [[1,5,3] , [4,8,7] , [6 , 9, 1]])
@@ -1392,46 +1392,72 @@ function arrayManipulation(n, queries) {
 function arrayManipulationTwo(n, queries) {
   let mainArr = new Array(queries.length).fill(new Array(n));
   let highestValue = 0;
-  
-  for (let i = 0 ; i< queries.length ; i++) {
-    const beginningIndex = queries[i][0]-1;
-    const endIndex = queries[i][1] -1;
+
+  for (let i = 0; i < queries.length; i++) {
+    const beginningIndex = queries[i][0] - 1;
+    const endIndex = queries[i][1] - 1;
     const addedValue = queries[i][2];
 
     // console.log(i)
     mainArr[i].fill(addedValue, beginningIndex)
-    console.log( mainArr[i] )
-  
+    console.log(mainArr[i])
+
   }
 
   // highestValue = mainArr.sort( (a,b)=>  b - a )[0]
-  
+
   console.log(mainArr)
   return highestValue;
 
-  
+
 }
 
 // arrayManipulationTwo(5 , [[1,2,100] , [2,5,200] , [1 , 4, 300]])
 
-function twoStrings (s1, s2) {
+function twoStrings(s1, s2) {
   let hashMap = {};
 
-  for (let i = 0 ; i < s1.length ; i ++) {
+  for (let i = 0; i < s1.length; i++) {
     if (!hashMap[s1[i]]) {
       hashMap[s1[i]] = true;
     }
   }
 
-  for (let i = 0 ; i < s2.length ; i++) {
+  for (let i = 0; i < s2.length; i++) {
     if (hashMap[s2[i]]) {
       console.log('YES')
       return 'YES'
     }
   }
 
-  console.log ('NO')
+  console.log('NO')
   return 'NO'
 }
 
-twoStrings('hi', 'world')
+// twoStrings('hi', 'world')
+
+function sherlockAndAnagrams(s) {
+
+  let total = 0;
+
+  for (let subLength = 1; subLength < s.length; subLength++) {
+    for (let i = 0; i < s.length; i++) {
+      let tempMap = {}
+      let subString = Array.from(s.substring(i, i + subLength)).sort().join()
+      tempMap[subString] = true
+      for (let j = i + 1; j < s.length; j++) {
+        let testSubStr = Array.from(s.substring(j, j + subLength)).sort().join()
+
+        if (tempMap[testSubStr]) {
+          total++
+        }
+      }
+    }
+  }
+
+  console.log(total)
+  return total
+
+}
+
+sherlockAndAnagrams('mom')
