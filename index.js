@@ -1519,4 +1519,23 @@ function maxiumumToys(prices , k) {
 
 }
 
-maxiumumToys([1 ,2,3,4] , 7 )
+// maxiumumToys([1 ,2,3,4] , 7 )
+
+
+function maxiumumToysTwo(prices , k) {
+  prices.sort((a,b) => a-b)
+  let maxToys;
+  let totalSpent = prices.shift()
+  console.log (prices)
+
+  if ( k - totalSpent < 0) {
+    return 0
+  }
+
+  maxToys = 1 + maxiumumToysTwo(prices, k - totalSpent)
+  console.log(maxToys)
+  return maxToys
+
+}
+
+ maxiumumToysTwo([1 ,12, 5 ,111, 200, 1000 ,10] , 50 ) 
