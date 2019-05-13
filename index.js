@@ -1493,4 +1493,30 @@ function sherlockAndAnagramsTwo (s) {
 
 }
 
-sherlockAndAnagramsTwo ('cdcd')
+// sherlockAndAnagramsTwo ('cdcd')
+
+
+function maxiumumToys(prices , k) {
+  let totalToys = 0
+  let totalSpent = 0
+
+  prices.sort((a,b) => a-b)
+
+  console.log(prices)
+ 
+
+  while( totalSpent + prices[totalToys] < k) {
+
+    totalSpent += prices[totalToys];
+
+    totalToys++
+
+  }
+
+  
+  console.log( totalToys )
+  return totalToys
+
+}
+
+maxiumumToys([1 ,2,3,4] , 7 )
