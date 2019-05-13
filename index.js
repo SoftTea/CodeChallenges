@@ -1460,4 +1460,37 @@ function sherlockAndAnagrams(s) {
 
 }
 
-sherlockAndAnagrams('mom')
+// sherlockAndAnagrams('mom')
+
+function sherlockAndAnagramsTwo (s) {
+
+  let allSubStrings = []
+  let hashMap = {}
+  let total = 0
+
+  for (let subStringLength = 1 ; subStringLength < s.length; subStringLength++) {
+
+    for(let j = 0 ; j + subStringLength  <= s.length ; j++) {
+      allSubStrings.push(s.substring(j,j+subStringLength))
+    }
+  }
+
+  for( let i = 0 ; i < allSubStrings.length ; i ++) {
+   allSubStrings[i] = Array.from(allSubStrings[i]).sort().join('');
+
+   if (!hashMap.hasOwnProperty(allSubStrings[i])) {
+      hashMap[allSubStrings[i]] = 0
+   } else if (hashMap.hasOwnProperty(allSubStrings[i])) {
+     hashMap[allSubStrings[i]]++
+     total+=hashMap[allSubStrings[i]]
+   }
+  }
+
+  
+  
+  console.log(total)
+  return total
+
+}
+
+sherlockAndAnagramsTwo ('cdcd')
