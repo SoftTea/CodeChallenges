@@ -1547,13 +1547,56 @@ function maxiumumToysTwo(prices , k) {
 
   }
   
-  
-  
-  
-  
+
 
  
 
 }
 
- maxiumumToysTwo([1 ,2,3,4] , 7 ) 
+//  maxiumumToysTwo([1 ,2,3,4] , 7 ) 
+
+ function alternatingCharacters(s) {
+  let stringArr = s.split('')
+  let delCount = 0;
+
+  
+
+  for (let i = 0 ; i < stringArr.length-1 ; i ++) {
+    
+    if (stringArr[i] === stringArr[i+1]) {
+      stringArr.splice(i+1 ,1);
+      i--;
+      delCount++;
+    }
+
+  }
+
+  console.log(delCount)
+  return delCount
+  
+}
+
+
+
+
+function alternatingCharactersTwo(s) {
+  let delCount = 0;
+
+  
+
+  for (let i = 0 ; i < s.length -1 ; i ++) {
+    
+    if (s[i] === s[i+1]) {
+  
+      delCount++;
+    }
+
+  }
+
+  console.log(delCount)
+  return delCount
+  
+}
+
+
+alternatingCharactersTwo('ABABABAB')
