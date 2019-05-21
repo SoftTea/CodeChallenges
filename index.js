@@ -1623,4 +1623,27 @@ function minimumAbsoluteDifference(arr) {
 
 }
 
-minimumAbsoluteDifference ([1, -3, 71, 68, 17])
+// minimumAbsoluteDifference ([1, -3, 71, 68, 17])
+
+function minimumAbsoluteDifferenceTwo(arr) {
+
+  let minAbso = Number.POSITIVE_INFINITY;
+
+  arr.sort((a,b) => { return a-b})
+  
+
+  for (let i = 0 ; i <arr.length ; i++) {
+    const currAbsoluteValue = Math.abs(arr[i]-arr[i+1]);
+
+    if (currAbsoluteValue < minAbso) {
+      minAbso = currAbsoluteValue;
+    }
+  }
+
+  console.log(minAbso);
+  return minAbso;
+
+
+}
+
+minimumAbsoluteDifferenceTwo([1 ,-3 ,71, 68, 17])
