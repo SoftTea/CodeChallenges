@@ -1599,4 +1599,28 @@ function alternatingCharactersTwo(s) {
 }
 
 
-alternatingCharactersTwo('ABABABAB')
+// alternatingCharactersTwo('ABABABAB')
+
+
+
+function minimumAbsoluteDifference(arr) {
+
+  let minAbso = Number.POSITIVE_INFINITY;
+
+  for (let i = 0 ; i< arr.length ; i ++) {
+    for (let j = i+1; j<arr.length ; j++) {
+      const currAbsoluteValue = Math.abs(arr[i] - arr[j])
+
+      if (currAbsoluteValue < minAbso) {
+        minAbso = currAbsoluteValue;
+      } 
+    }
+  }
+
+  console.log(minAbso);
+  return minAbso;
+
+
+}
+
+minimumAbsoluteDifference ([1, -3, 71, 68, 17])
