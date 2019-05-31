@@ -1390,29 +1390,40 @@ function arrayManipulation(n, queries) {
 
 
 function arrayManipulationTwo(n, queries) {
-  let mainArr = new Array(queries.length).fill(new Array(n));
+  let mainArr = []
+  let flatArr = []
   let highestValue = 0;
+  // console.log(mainArr)
 
   for (let i = 0; i < queries.length; i++) {
     const beginningIndex = queries[i][0] - 1;
     const endIndex = queries[i][1] - 1;
     const addedValue = queries[i][2];
 
-    // console.log(i)
-    mainArr[i].fill(addedValue, beginningIndex)
+    
+     mainArr.push(new Array(n).fill(addedValue,beginningIndex,endIndex))
     console.log(mainArr[i])
 
   }
 
+  for (let i = 0 ; i < mainArr.length ; i++) {
+    flatArr = flatArr.concat ([...mainArr[i]] )
+  }
+
+  for (let i = 0 ; i < flatArr.length ; i++) {
+    
+  }
+
+
   // highestValue = mainArr.sort( (a,b)=>  b - a )[0]
 
-  console.log(mainArr)
+  console.log(flatArr, 'end')
   return highestValue;
 
 
 }
 
-// arrayManipulationTwo(5 , [[1,2,100] , [2,5,200] , [1 , 4, 300]])
+// arrayManipulationTwo(5 , [[1,2,100] , [2,5,200] ])
 
 function twoStrings(s1, s2) {
   let hashMap = {};
@@ -1646,4 +1657,30 @@ function minimumAbsoluteDifferenceTwo(arr) {
 
 }
 
-minimumAbsoluteDifferenceTwo([1 ,-3 ,71, 68, 17])
+// minimumAbsoluteDifferenceTwo([1 ,-3 ,71, 68, 17])
+
+
+function CountTriplets (arr, r) {
+
+let tripletNum = 0 
+
+  for (let i = 0; i< arr.length ; i++) {
+    for ( let j = i ; j< arr.length ; j++) {
+      if(arr[j] === arr[i]*r) {
+        console.log(arr[j])
+        for (let k = j+1 ; k < arr.length; k++) {
+          if (arr[k] === arr[j]*r) {
+            console.log(arr[k])
+            tripletNum++
+          }
+        }
+      }
+    }
+  }
+
+  console.log(tripletNum)
+  return tripletNum
+
+}
+
+CountTriplets([1,1,1,1,1,1] , 1)
