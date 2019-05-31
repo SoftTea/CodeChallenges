@@ -1660,27 +1660,52 @@ function minimumAbsoluteDifferenceTwo(arr) {
 // minimumAbsoluteDifferenceTwo([1 ,-3 ,71, 68, 17])
 
 
-function CountTriplets (arr, r) {
+// function CountTriplets (arr, r) {
 
-let tripletNum = 0 
+// let tripletNum = 0 
 
-  for (let i = 0; i< arr.length ; i++) {
-    for ( let j = i ; j< arr.length ; j++) {
-      if(arr[j] === arr[i]*r) {
-        console.log(arr[j])
-        for (let k = j+1 ; k < arr.length; k++) {
-          if (arr[k] === arr[j]*r) {
-            console.log(arr[k])
-            tripletNum++
-          }
-        }
-      }
-    }
+//   for (let i = 0; i< arr.length ; i++) {
+//     for ( let j = i ; j< arr.length ; j++) {
+//       if(arr[j] === arr[i]*r) {
+//         console.log(arr[j])
+//         for (let k = j+1 ; k < arr.length; k++) {
+//           if (arr[k] === arr[j]*r) {
+//             console.log(arr[k])
+//             tripletNum++
+//           }
+//         }
+//       }
+//     }
+//   }
+
+//   console.log(tripletNum)
+//   return tripletNum
+
+// }
+
+function countTriplets(arr, r) {
+  let len = arr.length //1,1,3,9
+  let count = 0
+  var m2 = new Map() // keeps track of all ele * r
+  var m3 = new Map() // keeps track of all m2-keys as ele*r
+  arr.forEach((ele) => {
+    // if there is a Key in m3 with this element it means it is in the third position 
+    // add the existing count with the current look up on m3 for this ele
+      if (m3.get(ele))
+          count = count + m3.get(ele)
+
+      // if there is a Key in m2 for this ele it means it is the second position of [i,j,k]
+      if (m2.get(ele))
+      // set m3 with a key for the third position ele by ele * r
+      // if it exists add the m3 + m2 loop ups
+      // else set m3 with m2 count 
+          m3.set(ele * r, m3.get(ele*r)? m3.get(ele*r)+m2.get(ele) :m2.get(ele))
+
+      // Every ele * r is set to 1 if it doesnt exist while if it does it goes up by 1    
+      m2.set(ele * r, m2.get(ele * r) ? m2.get(ele * r) + 1 : 1)
+  })
+  console.log(m2, m3)
+  return count
   }
 
-  console.log(tripletNum)
-  return tripletNum
-
-}
-
-CountTriplets([1,1,1,1,1,1] , 1)
+countTriplets([1 ,2, 2 ,4] , 2)
