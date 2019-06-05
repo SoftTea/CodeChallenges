@@ -1400,18 +1400,18 @@ function arrayManipulationTwo(n, queries) {
     const endIndex = queries[i][1] - 1;
     const addedValue = queries[i][2];
 
-    
-     mainArr.push(new Array(n).fill(addedValue,beginningIndex,endIndex))
+
+    mainArr.push(new Array(n).fill(addedValue, beginningIndex, endIndex))
     console.log(mainArr[i])
 
   }
 
-  for (let i = 0 ; i < mainArr.length ; i++) {
-    flatArr = flatArr.concat ([...mainArr[i]] )
+  for (let i = 0; i < mainArr.length; i++) {
+    flatArr = flatArr.concat([...mainArr[i]])
   }
 
-  for (let i = 0 ; i < flatArr.length ; i++) {
-    
+  for (let i = 0; i < flatArr.length; i++) {
+
   }
 
 
@@ -1473,32 +1473,32 @@ function sherlockAndAnagrams(s) {
 
 // sherlockAndAnagrams('mom')
 
-function sherlockAndAnagramsTwo (s) {
+function sherlockAndAnagramsTwo(s) {
 
   let allSubStrings = []
   let hashMap = {}
   let total = 0
 
-  for (let subStringLength = 1 ; subStringLength < s.length; subStringLength++) {
+  for (let subStringLength = 1; subStringLength < s.length; subStringLength++) {
 
-    for(let j = 0 ; j + subStringLength  <= s.length ; j++) {
-      allSubStrings.push(s.substring(j,j+subStringLength))
+    for (let j = 0; j + subStringLength <= s.length; j++) {
+      allSubStrings.push(s.substring(j, j + subStringLength))
     }
   }
 
-  for( let i = 0 ; i < allSubStrings.length ; i ++) {
-   allSubStrings[i] = Array.from(allSubStrings[i]).sort().join('');
+  for (let i = 0; i < allSubStrings.length; i++) {
+    allSubStrings[i] = Array.from(allSubStrings[i]).sort().join('');
 
-   if (!hashMap.hasOwnProperty(allSubStrings[i])) {
+    if (!hashMap.hasOwnProperty(allSubStrings[i])) {
       hashMap[allSubStrings[i]] = 0
-   } else if (hashMap.hasOwnProperty(allSubStrings[i])) {
-     hashMap[allSubStrings[i]]++
-     total+=hashMap[allSubStrings[i]]
-   }
+    } else if (hashMap.hasOwnProperty(allSubStrings[i])) {
+      hashMap[allSubStrings[i]]++
+      total += hashMap[allSubStrings[i]]
+    }
   }
 
-  
-  
+
+
   console.log(total)
   return total
 
@@ -1507,16 +1507,16 @@ function sherlockAndAnagramsTwo (s) {
 // sherlockAndAnagramsTwo ('cdcd')
 
 
-function maxiumumToys(prices , k) {
+function maxiumumToys(prices, k) {
   let totalToys = 0
   let totalSpent = 0
 
-  prices.sort((a,b) => a-b)
+  prices.sort((a, b) => a - b)
 
   console.log(prices)
- 
 
-  while( totalSpent + prices[totalToys] < k) {
+
+  while (totalSpent + prices[totalToys] < k) {
 
     totalSpent += prices[totalToys];
 
@@ -1524,8 +1524,8 @@ function maxiumumToys(prices , k) {
 
   }
 
-  
-  console.log( totalToys )
+
+  console.log(totalToys)
   return totalToys
 
 }
@@ -1533,11 +1533,11 @@ function maxiumumToys(prices , k) {
 // maxiumumToys([1 ,2,3,4] , 7 )
 
 
-function maxiumumToysTwo(prices , k) {
-  prices.sort((a,b) => a-b)
+function maxiumumToysTwo(prices, k) {
+  prices.sort((a, b) => a - b)
   let maxToys;
   let total = recursive(k)
-  
+
   console.log(total)
   return total
 
@@ -1545,37 +1545,37 @@ function maxiumumToysTwo(prices , k) {
   function recursive(k) {
 
     let totalSpent = prices.shift()
-    
 
-    if ( k - totalSpent < 0) {
+
+    if (k - totalSpent < 0) {
       return 0
     }
-  
+
     maxToys = 1 + recursive(k - totalSpent)
-    
+
     return maxToys
-    
+
 
   }
-  
 
 
- 
+
+
 
 }
 
 //  maxiumumToysTwo([1 ,2,3,4] , 7 ) 
 
- function alternatingCharacters(s) {
+function alternatingCharacters(s) {
   let stringArr = s.split('')
   let delCount = 0;
 
-  
 
-  for (let i = 0 ; i < stringArr.length-1 ; i ++) {
-    
-    if (stringArr[i] === stringArr[i+1]) {
-      stringArr.splice(i+1 ,1);
+
+  for (let i = 0; i < stringArr.length - 1; i++) {
+
+    if (stringArr[i] === stringArr[i + 1]) {
+      stringArr.splice(i + 1, 1);
       i--;
       delCount++;
     }
@@ -1584,7 +1584,7 @@ function maxiumumToysTwo(prices , k) {
 
   console.log(delCount)
   return delCount
-  
+
 }
 
 
@@ -1593,12 +1593,12 @@ function maxiumumToysTwo(prices , k) {
 function alternatingCharactersTwo(s) {
   let delCount = 0;
 
-  
 
-  for (let i = 0 ; i < s.length -1 ; i ++) {
-    
-    if (s[i] === s[i+1]) {
-  
+
+  for (let i = 0; i < s.length - 1; i++) {
+
+    if (s[i] === s[i + 1]) {
+
       delCount++;
     }
 
@@ -1606,7 +1606,7 @@ function alternatingCharactersTwo(s) {
 
   console.log(delCount)
   return delCount
-  
+
 }
 
 
@@ -1618,13 +1618,13 @@ function minimumAbsoluteDifference(arr) {
 
   let minAbso = Number.POSITIVE_INFINITY;
 
-  for (let i = 0 ; i< arr.length ; i ++) {
-    for (let j = i+1; j<arr.length ; j++) {
+  for (let i = 0; i < arr.length; i++) {
+    for (let j = i + 1; j < arr.length; j++) {
       const currAbsoluteValue = Math.abs(arr[i] - arr[j])
 
       if (currAbsoluteValue < minAbso) {
         minAbso = currAbsoluteValue;
-      } 
+      }
     }
   }
 
@@ -1640,11 +1640,13 @@ function minimumAbsoluteDifferenceTwo(arr) {
 
   let minAbso = Number.POSITIVE_INFINITY;
 
-  arr.sort((a,b) => { return a-b})
-  
+  arr.sort((a, b) => {
+    return a - b
+  })
 
-  for (let i = 0 ; i <arr.length ; i++) {
-    const currAbsoluteValue = Math.abs(arr[i]-arr[i+1]);
+
+  for (let i = 0; i < arr.length; i++) {
+    const currAbsoluteValue = Math.abs(arr[i] - arr[i + 1]);
 
     if (currAbsoluteValue < minAbso) {
       minAbso = currAbsoluteValue;
@@ -1691,21 +1693,94 @@ function countTriplets(arr, r) {
   arr.forEach((ele) => {
     // if there is a Key in m3 with this element it means it is in the third position 
     // add the existing count with the current look up on m3 for this ele
-      if (m3.get(ele))
-          count = count + m3.get(ele)
+    if (m3.get(ele))
+      count = count + m3.get(ele)
 
-      // if there is a Key in m2 for this ele it means it is the second position of [i,j,k]
-      if (m2.get(ele))
+    // if there is a Key in m2 for this ele it means it is the second position of [i,j,k]
+    if (m2.get(ele))
       // set m3 with a key for the third position ele by ele * r
       // if it exists add the m3 + m2 loop ups
       // else set m3 with m2 count 
-          m3.set(ele * r, m3.get(ele*r)? m3.get(ele*r)+m2.get(ele) :m2.get(ele))
+      m3.set(ele * r, m3.get(ele * r) ? m3.get(ele * r) + m2.get(ele) : m2.get(ele))
 
-      // Every ele * r is set to 1 if it doesnt exist while if it does it goes up by 1    
-      m2.set(ele * r, m2.get(ele * r) ? m2.get(ele * r) + 1 : 1)
+    // Every ele * r is set to 1 if it doesnt exist while if it does it goes up by 1    
+    m2.set(ele * r, m2.get(ele * r) ? m2.get(ele * r) + 1 : 1)
   })
   console.log(m2, m3)
   return count
+}
+
+// countTriplets([1 ,2, 2 ,4] , 2)
+
+
+function freqQuery(queries) {
+  let freq = {};
+  let integerFreq = {};
+  let arr = [];
+
+  for (let query of queries) {
+
+    const operation = query[0]
+    const integer = query[1]
+
+    switch (operation) {
+      case 1: {
+
+        let newFrq = integerFreq.hasOwnProperty(integer) ? integerFreq[integer] + 1 : 1
+        let oldFrq = integerFreq.hasOwnProperty(integer) ? integerFreq[integer] : null
+
+        oldFrq ? freq[oldFrq]-- : null
+
+        freq[newFrq] ? freq[newFrq]++ : freq[newFrq] = 1
+
+
+        integerFreq[integer] = newFrq
+        break;
+      }
+      case 2: {
+        // console.log(query, 'case 2')
+        let newFrq = integerFreq.hasOwnProperty(integer) ? integerFreq[integer] - 1 : null
+        let oldFrq = integerFreq.hasOwnProperty(integer) ? integerFreq[integer] : null
+
+        
+        freq.hasOwnProperty(newFrq) ? freq[newFrq]+=1 : null
+        freq.hasOwnProperty(oldFrq) ? freq[oldFrq]-- : null
+
+        integerFreq[integer] < 1 ?   integerFreq[integer] = 0 : integerFreq[integer] = newFrq
+
+        break;
+      }
+      case 3: {
+        // console.log(query, 'case 3')
+        let value = 0
+        if (freq.hasOwnProperty(integer)) {
+          value = freq[integer] > 0 ? 1 : 0
+        }
+
+        arr.push(value);
+
+        break;
+      }
+
+
+    }
+
   }
 
-countTriplets([1 ,2, 2 ,4] , 2)
+  console.log(arr)
+  return arr
+
+}
+
+freqQuery([
+  [1 ,3],
+  [1 ,3],
+  [1 ,2],
+  [1 ,2],
+  [2 ,2],
+  [2 ,2],
+  [2 ,2],
+  [1,10],
+  [1,10],
+  [1,10]
+])
