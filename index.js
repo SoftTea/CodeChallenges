@@ -1772,15 +1772,85 @@ function freqQuery(queries) {
 
 }
 
-freqQuery([
-  [1 ,3],
-  [1 ,3],
-  [1 ,2],
-  [1 ,2],
-  [2 ,2],
-  [2 ,2],
-  [2 ,2],
-  [1,10],
-  [1,10],
-  [1,10]
-])
+// freqQuery([
+//   [1 ,3],
+//   [1 ,3],
+//   [1 ,2],
+//   [1 ,2],
+//   [2 ,2],
+//   [2 ,2],
+//   [2 ,2],
+//   [1,10],
+//   [1,10],
+//   [1,10]
+// ])
+
+
+function activityNotifications(expenditure, d) {
+
+  let notify = 0;
+
+  for (let i = 0 ; i < expenditure.length ; i++) {
+    if ( i >= d - 1 ) {
+      let endD = i+1; 
+      let beginD = i - (d-1);
+      let todaySpent = expenditure[i+1]
+
+      let trailingDays = expenditure.slice(beginD, endD).sort(compare);
+
+      let median = getMedian(trailingDays);
+
+      if (todaySpent >= 2* median ) {
+        notify++
+      }
+
+
+      // console.log(`trailing days` ,trailingDays)
+      // console.log(`median`, median);
+      // console.log(`todaySpent`, todaySpent)
+    }
+  }
+
+  console.log(notify)
+  return notify;  
+
+  
+  
+
+  function compare(a,b) {
+    return a - b 
+  }
+  
+  function getMedian(arr) {
+   let arrLength = arr.length;
+   let middleIndex = 0;
+
+    if (arrLength % 2 === 0) {
+      // console.log('Even')
+      let lowerBoundMiddleIndex;
+      let median = 0 ;
+      middleIndex = arrLength/2
+      lowerBoundMiddleIndex = middleIndex -1
+      
+      // console.log('lower',lowerBoundMiddleIndex);
+      // console.log( `middleIndex` , middleIndex);
+
+      median = (arr[middleIndex] + arr[lowerBoundMiddleIndex]) /2
+      
+      // console.log(median)
+
+      return median
+
+
+    } else if (arrLength % 2 !== 0) {
+      // console.log('Odd')
+      middleIndex = (arrLength-1)/2;
+
+      // console.log(middleIndex)
+      return arr[middleIndex]
+    }
+  }
+
+}
+
+activityNotifications ([1, 2, 3, 4 ,4] ,2)
