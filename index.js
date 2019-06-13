@@ -1853,4 +1853,59 @@ function activityNotifications(expenditure, d) {
 
 }
 
-activityNotifications ([1, 2, 3, 4 ,4] ,2)
+// Another Programmers solution to the problem: 
+// Things of note: Uses the Count Sort algorithm  ; uses the count Sort Array as a mock queue (no values are actually popped or pushed into the queue)
+function activityNotificationsTwo(expenditure, d) {
+  let alert = 0 // number of times alerted
+  let max = 200;
+  let countSort = new Array(max).fill(0) // used as a "queue"
+ 
+
+  let mid1 = Math.floor((d-1)/2) // account for zero
+  let mid2 = Math.ceil((d-1)/2) // based array hence d - 1
+
+  // count appearances of #s
+
+  for(let i = 0; i < d ; i++){
+    
+      countSort[expenditure[i]]++
+  }
+  
+  // the final loop for the counting sort alg is below, inside the following for loop:
+
+  // initialize i for the first day with d trailing days
+  for(let i = d; i < expenditure.length; i++){
+    let mVal1
+    let mVal2
+    let median
+    // j+=counterSort[i]: counting the position.
+    // Decode the sorted value from the countSort array.
+    // see counting sort alg (google it) for refrence.
+    // This is the final loop
+    // just no while loop.
+    // k counts the index position
+    for(let j = 0, k = 0; k <= mid1; k+=countSort[j], j++ ){
+      mVal1 = j
+    }
+    // k+=countSort[j], j++: this order matters, you want
+    // to increment j after the k count is done, not before it
+    for(let j = 0, k = 0; k <= mid2; k+=countSort[j], j++){
+      
+      mVal2 = j
+    }
+    // the reference formula from wikipedia
+    median = (mVal1 + mVal2) / 2
+
+    // if true then alert
+    if( expenditure[i] >= median * 2) alert++
+
+    // take care of the queue day trail
+    
+    countSort[expenditure[i-d]]-- // "pop" a day trail
+    countSort[expenditure[i]]++ // "add" new day trail
+  }
+  console.log('alert' , alert)
+  return alert;
+}
+
+activityNotificationsTwo ([2 ,3, 4, 2, 3, 6, 8, 4, 5] ,5)
