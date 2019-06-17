@@ -1908,4 +1908,55 @@ function activityNotificationsTwo(expenditure, d) {
   return alert;
 }
 
-activityNotificationsTwo ([2 ,3, 4, 2, 3, 6, 8, 4, 5] ,5)
+// activityNotificationsTwo ([2 ,3, 4, 2, 3, 6, 8, 4, 5] ,5)
+
+function countInversions(arr) {
+
+let total = 0
+
+mergeSort(arr)
+
+console.log(total)
+return total
+
+function mergeSort(arr){
+  var len = arr.length;
+  if(len <2)
+     return arr;
+  var mid = Math.floor(len/2),
+      left = arr.slice(0,mid),
+      right =arr.slice(mid);
+  //send left and right to the mergeSort to broke it down into pieces
+  //then merge those
+  let result = merge(mergeSort(left),mergeSort(right));
+  return result
+}
+
+
+function merge(left, right){
+  var result = [],
+      lLen = left.length,
+      rLen = right.length,
+      l = 0,
+      r = 0;
+  while(l < lLen && r < rLen){
+     if(left[l] <= right[r]){
+       result.push(left[l++]);
+       
+     }
+     else{
+       {total+=lLen-l }
+       result.push(right[r++]);
+      
+    }
+  }  
+  
+  return result.concat(left.slice(l)).concat(right.slice(r));
+}
+
+ 
+}
+
+
+
+countInversions([3,2,1])
