@@ -1742,11 +1742,11 @@ function freqQuery(queries) {
         let newFrq = integerFreq.hasOwnProperty(integer) ? integerFreq[integer] - 1 : null
         let oldFrq = integerFreq.hasOwnProperty(integer) ? integerFreq[integer] : null
 
-        
-        freq.hasOwnProperty(newFrq) ? freq[newFrq]+=1 : null
+
+        freq.hasOwnProperty(newFrq) ? freq[newFrq] += 1 : null
         freq.hasOwnProperty(oldFrq) ? freq[oldFrq]-- : null
 
-        integerFreq[integer] < 1 ?   integerFreq[integer] = 0 : integerFreq[integer] = newFrq
+        integerFreq[integer] < 1 ? integerFreq[integer] = 0 : integerFreq[integer] = newFrq
 
         break;
       }
@@ -1790,17 +1790,17 @@ function activityNotifications(expenditure, d) {
 
   let notify = 0;
 
-  for (let i = 0 ; i < expenditure.length ; i++) {
-    if ( i >= d - 1 ) {
-      let endD = i+1; 
-      let beginD = i - (d-1);
-      let todaySpent = expenditure[i+1]
+  for (let i = 0; i < expenditure.length; i++) {
+    if (i >= d - 1) {
+      let endD = i + 1;
+      let beginD = i - (d - 1);
+      let todaySpent = expenditure[i + 1]
 
       let trailingDays = expenditure.slice(beginD, endD).sort(compare);
 
       let median = getMedian(trailingDays);
 
-      if (todaySpent >= 2* median ) {
+      if (todaySpent >= 2 * median) {
         notify++
       }
 
@@ -1812,31 +1812,31 @@ function activityNotifications(expenditure, d) {
   }
 
   console.log(notify)
-  return notify;  
+  return notify;
 
-  
-  
 
-  function compare(a,b) {
-    return a - b 
+
+
+  function compare(a, b) {
+    return a - b
   }
-  
+
   function getMedian(arr) {
-   let arrLength = arr.length;
-   let middleIndex = 0;
+    let arrLength = arr.length;
+    let middleIndex = 0;
 
     if (arrLength % 2 === 0) {
       // console.log('Even')
       let lowerBoundMiddleIndex;
-      let median = 0 ;
-      middleIndex = arrLength/2
-      lowerBoundMiddleIndex = middleIndex -1
-      
+      let median = 0;
+      middleIndex = arrLength / 2
+      lowerBoundMiddleIndex = middleIndex - 1
+
       // console.log('lower',lowerBoundMiddleIndex);
       // console.log( `middleIndex` , middleIndex);
 
-      median = (arr[middleIndex] + arr[lowerBoundMiddleIndex]) /2
-      
+      median = (arr[middleIndex] + arr[lowerBoundMiddleIndex]) / 2
+
       // console.log(median)
 
       return median
@@ -1844,7 +1844,7 @@ function activityNotifications(expenditure, d) {
 
     } else if (arrLength % 2 !== 0) {
       // console.log('Odd')
-      middleIndex = (arrLength-1)/2;
+      middleIndex = (arrLength - 1) / 2;
 
       // console.log(middleIndex)
       return arr[middleIndex]
@@ -1859,22 +1859,22 @@ function activityNotificationsTwo(expenditure, d) {
   let alert = 0 // number of times alerted
   let max = 200;
   let countSort = new Array(max).fill(0) // used as a "queue"
- 
 
-  let mid1 = Math.floor((d-1)/2) // account for zero
-  let mid2 = Math.ceil((d-1)/2) // based array hence d - 1
+
+  let mid1 = Math.floor((d - 1) / 2) // account for zero
+  let mid2 = Math.ceil((d - 1) / 2) // based array hence d - 1
 
   // count appearances of #s
 
-  for(let i = 0; i < d ; i++){
-    
-      countSort[expenditure[i]]++
+  for (let i = 0; i < d; i++) {
+
+    countSort[expenditure[i]]++
   }
-  
+
   // the final loop for the counting sort alg is below, inside the following for loop:
 
   // initialize i for the first day with d trailing days
-  for(let i = d; i < expenditure.length; i++){
+  for (let i = d; i < expenditure.length; i++) {
     let mVal1
     let mVal2
     let median
@@ -1884,27 +1884,27 @@ function activityNotificationsTwo(expenditure, d) {
     // This is the final loop
     // just no while loop.
     // k counts the index position
-    for(let j = 0, k = 0; k <= mid1; k+=countSort[j], j++ ){
+    for (let j = 0, k = 0; k <= mid1; k += countSort[j], j++) {
       mVal1 = j
     }
     // k+=countSort[j], j++: this order matters, you want
     // to increment j after the k count is done, not before it
-    for(let j = 0, k = 0; k <= mid2; k+=countSort[j], j++){
-      
+    for (let j = 0, k = 0; k <= mid2; k += countSort[j], j++) {
+
       mVal2 = j
     }
     // the reference formula from wikipedia
     median = (mVal1 + mVal2) / 2
 
     // if true then alert
-    if( expenditure[i] >= median * 2) alert++
+    if (expenditure[i] >= median * 2) alert++
 
     // take care of the queue day trail
-    
-    countSort[expenditure[i-d]]-- // "pop" a day trail
+
+    countSort[expenditure[i - d]]-- // "pop" a day trail
     countSort[expenditure[i]]++ // "add" new day trail
   }
-  console.log('alert' , alert)
+  console.log('alert', alert)
   return alert;
 }
 
@@ -1912,51 +1912,105 @@ function activityNotificationsTwo(expenditure, d) {
 
 function countInversions(arr) {
 
-let total = 0
+  let total = 0
 
-mergeSort(arr)
+  mergeSort(arr)
 
-console.log(total)
-return total
+  console.log(total)
+  return total
 
-function mergeSort(arr){
-  var len = arr.length;
-  if(len <2)
-     return arr;
-  var mid = Math.floor(len/2),
-      left = arr.slice(0,mid),
-      right =arr.slice(mid);
-  //send left and right to the mergeSort to broke it down into pieces
-  //then merge those
-  let result = merge(mergeSort(left),mergeSort(right));
-  return result
-}
+  function mergeSort(arr) {
+    var len = arr.length;
+    if (len < 2)
+      return arr;
+    var mid = Math.floor(len / 2),
+      left = arr.slice(0, mid),
+      right = arr.slice(mid);
+    //send left and right to the mergeSort to broke it down into pieces
+    //then merge those
+    let result = merge(mergeSort(left), mergeSort(right));
+    return result
+  }
 
 
-function merge(left, right){
-  var result = [],
+  function merge(left, right) {
+    var result = [],
       lLen = left.length,
       rLen = right.length,
       l = 0,
       r = 0;
-  while(l < lLen && r < rLen){
-     if(left[l] <= right[r]){
-       result.push(left[l++]);
-       
-     }
-     else{
-       {total+=lLen-l }
-       result.push(right[r++]);
+    while (l < lLen && r < rLen) {
+      if (left[l] <= right[r]) {
+        result.push(left[l++]);
+
+      } else {
+        {
+          total += lLen - l
+        }
+        result.push(right[r++]);
+
+      }
+    }
+
+    return result.concat(left.slice(l)).concat(right.slice(r));
+  }
+
+
+}
+
+
+
+// countInversions([3,2,1])
+
+function isValid(s) {
+  let sArr = s.split('')
+  let map = {}
+
+  for (let letter of sArr) {
+    !map.hasOwnProperty(letter) ? map[letter] = 1 : map[letter]++
+  }
+
+  
+  function test1 () { 
+  let freq = false
+  let flag = true
+
+  for (let key in map) {
+    !freq ? freq = map[key] : null
+    if (freq !== map[key]) {
+
+      if (flag && map[key] - 1 === freq || flag && map[key] - 1 === 0) {
+
+        flag = false
+      } else { return false }
       
     }
-  }  
-  
-  return result.concat(left.slice(l)).concat(right.slice(r));
+
+  }
+  return true
 }
 
+function test2 () {
+  let freq = false
+  let values = Object.values(map)
+  values[0]--
+  for (let i =0 ; i< values.length; i++) {
+    values[0] > 0 ? freq = values[0] : freq=values[1]
+    console.log(freq)
+    if (freq !== values[i]) {
+        return false 
+    }
+
+  }
+  return true
+}
  
+  
+  
+  if (test1() || test2()) {return 'YES'}
+  
+  return 'NO'
+
 }
 
-
-
-countInversions([3,2,1])
+console.log(isValid('aaabbbcc'))
