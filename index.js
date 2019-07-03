@@ -2013,4 +2013,192 @@ function test2 () {
 
 }
 
-console.log(isValid('aaabbbcc'))
+// console.log(isValid('aaabbbcc'))
+
+function substrCount (n,s) {
+  let substringCounter = 2 ;
+  let result = n;
+  let allSubStrings = []
+
+  for (let i = 0 ; substringCounter <= n ; i++) {
+    let iMod = i
+   
+    
+    let sub = s.substring(iMod,substringCounter+iMod)
+
+    if (sub.length % 2 != 0) {
+      let mid = Math.floor( sub.length / 2 )
+      let split = sub.split('')
+     
+      split[mid] = ''
+      // console.log(split)
+      sub = split.join('')
+
+    }
+
+    allSubStrings.push(sub)
+
+    
+
+    // console.log(sub)
+    if (iMod+substringCounter === n  ) {
+      substringCounter++
+      i = -1
+    }
+
+    
+    
+  }
+
+  console.log(allSubStrings)
+  for (let st of allSubStrings) {
+   let  primaryLetter = st[0]
+    for (let j = 1 ; j < st.length; j++) {
+
+      if (st[j] !== primaryLetter) {
+        break
+      }
+      if (j === st.length - 1) {
+        result++
+      } 
+
+    }
+  }
+
+
+  console.log(result)
+  return result
+
+}
+
+// substrCount( 8,'mnonopoo')
+
+function substrCountAnswer(n, s) {
+  let history = [];
+  let historyCount = 0;
+
+
+  // historyItem = [current, occurrence]
+  let historyItem = [s[0], 1];
+
+  let palindromicCount = 0;
+
+  for(let i = 1; i < n; i++ )
+      if(s[i] == historyItem[0])
+          historyItem[1]++;
+      else{
+          // Calcuate all strings that can be formed with the same character
+          // Count total substrings  -> n * (n + 1) / 2 for 
+          palindromicCount += historyItem[1] * (historyItem[1] + 1) / 2;
+
+          
+          if(historyCount == 2){
+              // Calcuate all strings that can be formed with the same character except middle character
+              if(history[0][0] == historyItem[0] && history[1][1] == 1 )
+                  palindromicCount += Math.min(history[0][1], historyItem[1])
+
+              history.shift();
+              historyCount--;
+          }
+              
+          history.push(historyItem);
+          historyCount++;
+          historyItem = [s[i], 1];
+         
+      }
+  
+  
+  palindromicCount += historyItem[1] * (historyItem[1] + 1) / 2;
+
+  if(historyCount == 2)
+      if(history[0][0] == historyItem[0] && history[1][1] == 1 )
+                  palindromicCount += Math.min(history[0][1], historyItem[1])
+  
+  
+  
+   console.log(palindromicCount)               
+  return palindromicCount;
+}
+
+// substrCountAnswer(5, 'aabab')
+
+function commonChild (s1, s2) {
+
+  let x = {}
+
+  for (let i = 0 ; i< s1.length; i++) {
+   if ( x.hasOwnProperty(s1[i])  ) {
+      x[s1[i]].push(i)
+    } else {
+    x[s1[i]] = [i]
+    }
+  }
+  console.log(x)
+
+}
+
+// commonChild('AA', 'BB')
+
+
+function makeAnagram(a,b) {
+
+  let arrayA = a.split('');
+  let arrayB = b.split('');
+
+  
+  let deleteCount = 0 
+
+  for (let i = 0 ; i < arrayA.length ; i++) {
+    let letterIn = arrayB.findIndex((e) => e === arrayA[i])
+    
+
+    if (letterIn === -1 ) {
+      deleteCount++
+    } else {
+      arrayB.splice(letterIn,1)
+    }
+  }
+
+  console.log(deleteCount + arrayB.length)
+  return deleteCount + arrayB.length
+
+}
+
+// makeAnagram ('cde', 'dcf')
+
+function makeAnagramTwo (a,b) {
+
+  let letterMap = {};
+  let numberOfDeletion = 0;
+
+  for (let i = 97 ; i <= 122 ; i ++) 
+  {
+    let letter = String.fromCharCode(i)
+    letterMap[letter] = 0
+  }
+
+  for (let i = 0 ; i < a.length ; i++) {
+    let letter = a[i];
+    letterMap[letter] +=1 
+  }
+
+  for (let i = 0 ; i < b.length ; i++) {
+    let letter = b[i]
+    letterMap[letter] -=1
+  }
+
+  for (let key in letterMap) {
+    
+    numberOfDeletion += Math.abs(letterMap[key])
+  }
+  
+ 
+
+  console.log(numberOfDeletion)
+  return numberOfDeletion;
+
+}
+
+
+makeAnagramTwo('cde', 'dcf')
+
